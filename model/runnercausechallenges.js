@@ -32,4 +32,4 @@ var RunnerStepsSchema = mongoose.Schema({
     }
 });
 
-module.exports = restful.model(CONSTANT.TABLES.RUNNER_STEPS, RunnerStepsSchema);
+module.exports = restful.model(CONSTANT.TABLES.RUNNER_CAUSE_CHALLENGES, RunnerStepsSchema);

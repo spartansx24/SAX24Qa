@@ -22,4 +22,4 @@ var CauseSchema = mongoose.Schema({
     }
 });
 
-module.exports = restful.model(CONSTANT.TABLES.CAUSE, CauseSchema);
+module.exports = restful.model(CONSTANT.TABLES.CAUSES, CauseSchema);
