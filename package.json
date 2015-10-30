@@ -1,20 +1,24 @@
 {
-    "name": "x24spartans",
-    "version": "1.0.0",
-    "description": "x24spartans stepAhead",
-    "main": "server.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "async": "^1.5.0",
-        "body-parser": "^1.14.1",
-        "crypto": "0.0.3",
-        "express": "^4.13.3",        
-        "mongoose": "^4.2.3",
-        "nodemailer": "^1.4.0",
-        "node-restful": "^0.2.2"
-    }
+  "name": "x24spartans",
+  "version": "1.0.0",
+  "description": "x24spartans stepAhead",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "mocha",
+    "postinstall": "bower install"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^1.5.0",
+    "body-parser": "^1.14.1",
+    "bower": "^1.6.5",
+    "crypto": "0.0.3",
+    "express": "^4.13.3",
+    "mongoose": "^4.2.3",
+    "node-restful": "^0.2.2",
+    "passport": "~0.2.2",
+    "passport-local": "^1.0.0"
+  }
 }
