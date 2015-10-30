@@ -77,6 +77,9 @@ var UserSchema = mongoose.Schema({
     address: {
         type: String
     },
+    location:{
+        type: String/*"lat,long"*/
+    },
     password: {
         type: String,
         default: '',

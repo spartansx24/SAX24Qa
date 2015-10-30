@@ -13,6 +13,13 @@ var CauseSchema = mongoose.Schema({
         ref: CONSTANT.TABLES.USERS,
         required: true
     },
+    target:{
+        type: String
+    },
+    active:{
+        type: Number,
+        enum: [0,1]
+    },
     created: {
         type: Date,
         default: Date.now

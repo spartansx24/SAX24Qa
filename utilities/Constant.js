@@ -7,7 +7,8 @@ module.exports = {
             'ROLE': 'role',
             'SPONSOR_CHALLENGES': 'sponsor_challenges',
             'RUNNER_CAUSE_CHALLENGES': 'runner_cause_challenges',
-            'USER_ROLES': {'RUNNER': 1, 'SPONSOR': 2, 'NGO': 3}
+            'USER_ROLES': {'RUNNER': 1, 'SPONSOR': 2, 'NGO': 3},
+            'RUNNER_MOTION_TYPES': {'UNKNOWN':0, 'IDLE': 1, 'WALKING': 2, 'JOGGING': 3, 'RUNNING': 4 }
         }
     }
 };

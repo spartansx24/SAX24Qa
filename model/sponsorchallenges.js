@@ -6,6 +6,24 @@ var SponsorChallengeSchema = mongoose.Schema({
     name:{
         type: String
     },
+    description:{
+        type: String
+    },
+    sponsor: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: CONSTANT.TABLES.USERS,
+        required: true
+    },
+    target:{
+        type: String
+    },
+    challengeLocation:{
+        type: String
+    },
+    type:{
+        type: String,
+        default: 'Running'
+    },
     startTime: {
         type: Date
     },
@@ -18,15 +36,10 @@ var SponsorChallengeSchema = mongoose.Schema({
     contribution: {
         type: Number
     },
-    sponsor: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: CONSTANT.TABLES.USERS,
-        required: true
-    },
     created: {
         type: Date,
         default: Date.now
-    },
+    }
 });
 
 module.exports = restful.model(CONSTANT.TABLES.SPONSOR_CHALLENGES, SponsorChallengeSchema);

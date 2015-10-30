@@ -8,15 +8,23 @@ var RunnerStepsSchema = mongoose.Schema({
         trim: true,
         default: ''
     },
-    runner: {
+    totalSteps: {
+        type: Number
+    },
+    totalDistance:{
+        type: String
+    },
+    dateTime:{
+        type: String
+    },
+    runnercausechallenge: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: CONSTANT.TABLES.USERS,
+        ref: CONSTANT.TABLES.RUNNER_CAUSE_CHALLENGES,
         required: true
     },
-    sponsor: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: CONSTANT.TABLES.USERS,
-        required: true
+    motionType: {
+        type: String,
+        enum: [0,1,2,3,4]
     },
     created: {
         type: Date,
