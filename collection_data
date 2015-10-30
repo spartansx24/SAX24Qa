@@ -1,0 +1,99 @@
+/*Runner*/
+{
+    "firstName": "Runner",
+    "lastName": "One",
+    "dob": "2015-10-28T09:16:33.823Z",
+    "gender": "Male",
+    "weight": "55 kgs",
+    "height": "5 ft. 3 inches",
+    "email": "runnerone@example.com",
+    "password": "runner1",
+    "mobile": "1234568",
+    "bandId": "band1",
+    "bandDetails": "testband",
+    "userRole": 1
+}
+
+/*Sponsor*/
+{
+    "firstName": "Sponsor One",
+    "description": "Sponsor One Description",
+    "type": "Advertising Industry",
+    "location": "18.515479,73.926203",
+    "phoneNumber": "456546",
+    "email": "sponsorone@example.com",
+    "address": "MagarpattaCity,Pune",
+    "userRole": 2
+}
+
+/*NGO*/
+{
+    "firstName": "Sponsor One",
+    "description": "Sponsor One Description",
+    "workIn": "Advertising Industry",
+    "address": "MagarpattaCity,Pune",
+    "contactPerson": "SponserOneContact",
+    "type": "NatureandWildLife",
+    "userRole": 3
+}
+
+/*Causes*/
+{
+    "ngo": "ObjectId",
+    "firstName": "Cause One Name",
+    "description": "Cause One Description",
+    "location": "18.515479,73.926203",
+    "startDate": "2015-10-28T09:16:33.823Z",
+    "endDate": "2015-10-30T09:16:33.823Z",
+    "contactPerson": "CauseOneContact",
+    "target": "$2000",
+    "active": 1
+}
+
+/*RunnerSteps*/
+{
+    "runnercausechallenge": "ObjectId",
+    "totalSteps": "Cause One Name",
+    "totalDistance": "Cause One Description",
+    "dateTime": "2015-10-28T09:16:33.823Z"
+}
+
+/*RunnerCauseChallenges*/
+{
+    "runner": "ObjectId",
+    "cause": "ObjectId",
+    "challenge": "ObjectId"
+}
+
+/*SponsorChallenges*/
+{
+	"firstName": "Sponsor Challenge One Name",
+	"description": "Sponsor Challenge One Description",
+	"sponsor": "ObjectId",/* _id from users collection */
+	"target": "$2000",
+	"challengeLocation": "Kalyaninagar, Pune",
+	"type": "Running",
+	"startDate": "2015-10-28T09:16:33.823Z"
+	"endDate": "2015-10-30T09:16:33.823Z",
+	"steps": 200000
+	"contribution": 20
+}
+
+/*Challenges: Non Sponor Linked Challenges Master Collection */
+{
+    "firstName": "Sponsor Challenge One Name",
+    "description": "Sponsor Challenge One Description",    
+    "target": "$2000",
+    "challengeLocation": "Kalyaninagar, Pune",
+    "type": "Running",
+    "startDate": "2015-10-28T09:16:33.823Z",
+    "endDate": "2015-10-30T09:16:33.823Z",
+    "steps": 200000,
+    "contribution": 20
+}
+
+AIzaSyBqynhJW9gwur-QFxgOPUC_Ac02bx7WKw8
+
+
+
+
