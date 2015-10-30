@@ -6,6 +6,9 @@ var sponserChallangesModel = require('./model/sponsorchallenges');
 
 module.exports = function(app) {
     
+    userModel.methods(['get', 'post', 'delete']);
+    userModel.register(app, '/api/user');
+
     app.get('/', function(req, res) {        
         res.sendfile('./public/index.html');
     });
@@ -23,7 +26,7 @@ module.exports = function(app) {
         }        
         regObj.dob = req.body.dob;
         regObj.contactNumber = req.body.contactNumber;
-        regObj.email = req.body.emailId;
+        regObj.email = req.body.email;
         regObj.password = req.body.password; 
         
         userModel.find({
@@ -68,6 +71,9 @@ module.exports = function(app) {
 
     app.post('/api/progressSteps', function(req, res) {     
     });
+
+
+
 
     app.post('/api/validateLogin', function(req, res) {     
         
