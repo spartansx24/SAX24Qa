@@ -31,12 +31,16 @@ module.exports = function(app) {
         userModel.find({
             email:regObj.email
         }, function(err, users){
+            if(err) res.json({'err': err});
+
             console.log(users);
             if(users && users.length > 0) {
                 res.json({'status': false, 'msg': 'user already exist'});
             } else {
                 var userModelObj = new userModel(regObj);
                 userModelObj.save(function(err, userAddedObj){
+                    if(err) res.json({'err': err});
+                    
                     console.log(userAddedObj);
                     res.json({'status': true, 'userObj': userAddedObj});
                 });

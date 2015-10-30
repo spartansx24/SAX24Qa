@@ -37,6 +37,10 @@
             }
         }
 
+        vm.routeToAddChallenge = function() {
+            $location.path('/addNewChallenge');            
+        }
+        
         vm.loadHomePageData();
     }
 

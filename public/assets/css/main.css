@@ -65,6 +65,11 @@ body {
   padding: 15px;
   margin: 0 auto;
 }
+
+.margin-bottom {
+  margin-bottom: 10px;
+}
+
 .form-signin .form-signin-heading,
 .form-signin .checkbox {
   margin-bottom: 10px;

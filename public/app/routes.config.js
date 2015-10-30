@@ -36,6 +36,26 @@
                     }]
                 }
             })
+
+            .when('/register', {
+                templateUrl: 'app/home/register.html',
+                controller: 'UserRegisterController',
+                controllerAs: 'userRegisterCtrl',
+                resolve: {
+                    auth: ["$q", "loginAuthenticationFactory", function($q, loginAuthenticationFactory) {
+                        var userId = loginAuthenticationFactory.getLoggedInUserId();
+
+                        if (userId) {
+                            return $q.resolve();
+                        } else {
+                            return $q.reject({
+                                authenticated: false
+                            });
+                        }
+                    }]
+                }
+            })
+
             .when('/login', {
                 templateUrl: 'app/login/login.html',
                 controller: 'LoginController',
