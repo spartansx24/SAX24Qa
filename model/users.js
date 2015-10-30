@@ -32,26 +32,49 @@ var UserSchema = mongoose.Schema({
         enum: ['Male', 'Female'],
         trim: true
     },
-    /*
     height: {
         type: String,
         trim: true
     },
-    width: {
+    weight: {
         type: String,
         trim: true
     },
-    */
     bandId: {
         type: String
     },
+    bandDetails: {
+        type: String
+    },
+    description: {
+        type: String
+    },
+    type:{
+        type: String
+    },
+    active:{
+        type: Number,
+        enum: [0, 1]
+    },
     dob: {
-        type: Date
+        type: String
     },
     photo: {
         type: String
     },
-    contactNumber: {
+    phoneNumber:{
+        type: String
+    },
+    mobile: {
+        type: String
+    },
+    contactPerson: {
+        type: String
+    },
+    workIn: {
+        type: String
+    },
+    address: {
         type: String
     },
     password: {
@@ -59,22 +82,9 @@ var UserSchema = mongoose.Schema({
         default: '',
         trim: true
     },
-    salt: {
-        type: String
-    },
-    updated: {
-        type: Date
-    },
     created: {
         type: Date,
         default: Date.now
-    },
-    /* For reset password */
-    resetPasswordToken: {
-        type: String
-    },
-    resetPasswordExpires: {
-        type: Date
     }
 });
 
@@ -82,6 +92,7 @@ var UserSchema = mongoose.Schema({
 /**
  * Hook a pre save method to hash the password
  */
+/*
 UserSchema.pre('save', function (next) {
     if (this.password && this.isModified('password')) {
         this.salt = crypto.randomBytes(16).toString('base64');
@@ -121,5 +132,6 @@ UserSchema.statics.findUniqueUsername = function (username, suffix, callback) {
         }
     });
 };
+*/
 
 module.exports = restful.model(CONSTANT.TABLES.USERS, UserSchema);
