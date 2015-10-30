@@ -1,19 +1,23 @@
 {
-  "name": "x24spartans",
-  "version": "1.0.0",
-  "description": "x24spartans stepAhead",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "async": "^1.5.0",
-    "body-parser": "^1.14.1",
-    "express": "^4.13.3",
-    "mongoose": "^4.2.3",
-	"nodemailer": "^1.4.0",
-    "node-restful": "^0.2.2"
-  }
+    "name": "x24spartans",
+    "version": "1.0.0",
+    "description": "x24spartans stepAhead",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "async": "^1.5.0",
+        "body-parser": "^1.14.1",
+        "crypto": "0.0.3",
+        "express": "^4.13.3",
+        "generate-password": "^1.1.1",
+        "mongoose": "^4.2.3",
+        "nodemailer": "^1.4.0",
+        "node-restful": "^0.2.2",
+        "owasp-password-strength-test": "^1.3.0",
+        "validator": "^3.41.2"
+    }
 }
