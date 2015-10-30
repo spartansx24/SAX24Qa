@@ -23,7 +23,7 @@ module.exports = function(app) {
         }        
         regObj.dob = req.body.dob;
         regObj.contactNumber = req.body.contactNumber;
-        regObj.email = req.body.emailId;
+        regObj.email = req.body.email;
         regObj.password = req.body.password; 
         
         userModel.find({
