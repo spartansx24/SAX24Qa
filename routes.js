@@ -75,20 +75,19 @@ module.exports = function(app) {
         reqObj.runnercausechallenge = runnercausechallengeId;
         reqObj.dateTime = req.body.dateTime;
         reqObj.totalDistance = req.body.totalDistance;
-
-        reqObj.totalSteps = parseFloat(totalDistance/76.2);
+        reqObj.totalSteps = parseFloat(reqObj.totalDistance/76.2);
 
         var stepModelObj = new runnerStepsModel(reqObj);
         stepModelObj.save(function(err, stepAddedObj){
             if(err) res.json({'err': err});
 
-
-            stepModelObj.find({_id:runnercausechallengeId}).lean().exec(function (err, sponsorcausechallenges) {
+            console.log("stepAddedObj", stepAddedObj);
+            runnerStepsModel.find({'runnercausechallenge':runnercausechallengeId}, function (err, sponsorcausechallenges) {
                 if (err) {
                     res.json({message: 'Error in finding sponsorcausechallenges!'});
                 }
                 else {
-
+                    console.log(sponsorcausechallenges);
                     var sumSteps = 0;
                     var rowsLength = sponsorcausechallenges.length;
                     for(var i=0; i<rowsLength; i++ ){

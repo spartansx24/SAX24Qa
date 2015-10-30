@@ -61,9 +61,9 @@
                 addCauseobj.description = this.addChallangeField.desc;
                 addCauseobj.ngo = userObj._id;
                 addCauseobj.target = this.addChallangeField.target;
-                addCauseobj.challengeLocation = this.addChallangeField.location;
-                addCauseobj.startTime = $scope.start_date;
-                addCauseobj.endTime = $scope.end_date;
+                addCauseobj.location = this.addChallangeField.location;
+                addCauseobj.startDate = $scope.start_date;
+                addCauseobj.endDate = $scope.end_date;
 
                 AddChallengeService.addChallengeData(addChallengeobj).then(function(result){
                     if(result.status === true) {
