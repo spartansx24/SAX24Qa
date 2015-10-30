@@ -14,11 +14,11 @@ var transporter = nodemailer.createTransport({
 
 // setup e-mail data with unicode symbols
 var mailOptions = {
-    from: 'Fred Foo ✔ <foo@blurdybloop.com>', // sender address
-    to: 'bar@blurdybloop.com, baz@blurdybloop.com', // list of receivers
-    subject: 'Hello ✔', // Subject line
-    text: 'Hello world ✔', // plaintext body
-    html: '<b>Hello world ✔</b>' // html body
+    from: 'sandesh.magdum<extentia.com>', // sender address
+    to: 'nilesh.dethe@extentia.com, harpreet.singh@extentia.com', // list of receivers
+    subject: 'Hello Test NodeMailer', // Subject line
+    text: 'Hello world', // plaintext body
+    html: '<b>Hello world</b>' // html body
 };
 
 // send mail with defined transport object
