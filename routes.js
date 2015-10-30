@@ -11,6 +11,7 @@ module.exports = function(app) {
     });
 
     app.post('/api/register', function(req, res) {     
+        console.log(req);
         var regObj = {};
 
         regObj.firstName = req.body.firstName;
