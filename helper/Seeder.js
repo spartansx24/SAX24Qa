@@ -1,7 +1,7 @@
 var restful = require('node-restful');
 var async = require('async');
 var mongoose = restful.mongoose;
-var userModel = require('../model/causes');
+var userModel = require('../model/runnercausechallenges');
 var CONSTANT = require('../utilities/Constant');
 
 function PopulateDB() {
@@ -16,71 +16,65 @@ PopulateDB.prototype.writeToDB = function () {
 
         var sponsors = [
             {
-                "ngo": "5633b55f94d9e0801990e0d6",
-                "firstName": "Pets Lifeline",
-                "description": "care for homeless dogs and cats",
-                "location": "18.515479,73.926203",
-                "startDate": "2015-10-28T09:16:33.823Z",
-                "endDate": "2015-10-30T09:16:33.823Z",
-                "contactPerson": "Anand Deshmukh",
-                "target": "10000",
-                "active": 1
+                "runner": "5633a38a91adb3001f529aed",
+                "cause": "5633cab783ac69fc00e6d592",
+                "challenge": "5633c1f380afb33c0db468ab"
             },
             {
-                "ngo": "5633b55f94d9e0801990e0d7",
-                "firstName": "Eklavya Nyasa",
-                "description": "Free health checkup for underprivileged children in Kalyaninagar",
-                "location": "18.515479,73.926203",
-                "startDate": "2015-10-28T09:16:33.823Z",
-                "endDate": "2015-10-30T09:16:33.823Z",
-                "contactPerson": "Renutai Gavaskar",
-                "target": "20000",
-                "active": 1
+                "runner": "5633a38a91adb3001f529aed",
+                "cause": "5633cab783ac69fc00e6d597",
+                "challenge": "5633c1f380afb33c0db468b0"
             },
             {
-                "ngo": "5633b55f94d9e0801990e0d8",
-                "firstName": "Vatsalya Foundation",
-                "description": "Arranging Shelter homes for street children in kalyani nagar area",
-                "location": "18.515479,73.926203",
-                "startDate": "2015-10-28T09:16:33.823Z",
-                "endDate": "2015-10-30T09:16:33.823Z",
-                "contactPerson": "Anand Niketan",
-                "target": "50000",
-                "active": 1
+                "runner": "5633a38a91adb3001f529af0",
+                "cause": "5633cab783ac69fc00e6d596",
+                "challenge": "5633c1f380afb33c0db468ae"
             },
             {
-                "ngo": "5633b55f94d9e0801990e0d4",
-                "firstName": "DoorStepSchool",
-                "description": "Independence day celebration for DSS children",
-                "location": "18.515479,73.926203",
-                "startDate": "2016-08-15T09:16:33.823Z",
-                "endDate": "2016-08-15T09:16:33.823Z",
-                "contactPerson": "Rajani Paranjpe",
-                "target": "10000",
-                "active": 1
+                "runner": "5633a38a91adb3001f529aef",
+                "cause": "5633cab783ac69fc00e6d597",
+                "challenge": "5633c1f380afb33c0db468ad"
             },
             {
-                "ngo": "5633b55f94d9e0801990e0d4",
-                "firstName": "DoorStepSchool",
-                "description": "Drawing competation for DSS children",
-                "location": "18.515479,73.926203",
-                "startDate": "2015-12-15T09:16:33.823Z",
-                "endDate": "2015-12-17T09:16:33.823Z",
-                "contactPerson": "Kiran Marathe",
-                "target": "10000",
-                "active": 1
+                "runner": "5633a38a91adb3001f529af1",
+                "cause": "5633cab783ac69fc00e6d593",
+                "challenge": "5633c1f380afb33c0db468ae"
+            },
+            {
+                "runner": "5633a38a91adb3001f529aee",
+                "cause": "5633cab783ac69fc00e6d594",
+                "challenge": "5633c1f380afb33c0db468b0"
+            },
+            {
+                "runner": "5633a38a91adb3001f529af5",
+                "cause": "5633cab783ac69fc00e6d596",
+                "challenge": "5633c1f380afb33c0db468b4"
+            },
+            {
+                "runner": "5633a38a91adb3001f529af4",
+                "cause": "5633cab783ac69fc00e6d596",
+                "challenge": "5633c1f380afb33c0db468b2"
+            },
+            {
+                "runner": "5633a38a91adb3001f529af2",
+                "cause": "5633cab783ac69fc00e6d596",
+                "challenge": "5633c1f380afb33c0db468b3"
             }
             ,
             {
-                "ngo": "5633b55f94d9e0801990e0d5",
-                "firstName": "Friends of Children",
-                "description": " trainer camps & skill sessions for college students in warave area Pune",
-                "location": "18.515479,73.926203",
-                "startDate": "2015-12-15T09:16:33.823Z",
-                "endDate": "2015-12-16T09:16:33.823Z",
-                "contactPerson": "Aparna Pardeshi",
-                "target": "20000",
-                "active": 1
+                "runner": "5633a38a91adb3001f529af3",
+                "cause": "5633cab783ac69fc00e6d597",
+                "challenge": "5633c1f380afb33c0db468ac"
+            },
+            {
+                "runner": "5633a38a91adb3001f529af5",
+                "cause": "5633cab783ac69fc00e6d597",
+                "challenge": "5633c1f380afb33c0db468b1"
+            },
+            {
+                "runner": "5633a38a91adb3001f529af0",
+                "cause": "5633cab783ac69fc00e6d596",
+                "challenge": "5633c1f380afb33c0db468b1"
             }
         ];
 

@@ -11,7 +11,7 @@ var RunnerStepsSchema = mongoose.Schema({
     totalSteps: {
         type: Number
     },
-    totalDistance:{
+    stepsUnit:{
         type: String
     },
     dateTime:{

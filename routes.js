@@ -1,7 +1,7 @@
 var userModel = require('./model/users');
 var causesModel = require('./model/causes');
-var runerstepsModel = require('./model/runersteps');
-var runnerChallangesModel = require('./model/runnercausechallenges');
+var runerStepsModel = require('./model/runersteps');
+var runnerCauseChallengesModel = require('./model/runnercausechallenges');
 var sponserChallangesModel = require('./model/sponsorchallenges');
 var CONSTANT = require('./utilities/Constant').CONSTANT;
 
@@ -69,22 +69,29 @@ module.exports = function(app) {
         }); 
     });
 
-    app.post('/api/updateRunStep', function(req, res) {     
+    app.post('/api/insertRunStep', function(req, res) {
+        var runnerCauseChallengeId = req.query.runnerCauseChallengeId;
+        var totalSteps = req.query.totalSteps;
+        var stepUnit = req.query.stepUnit;
     });
 
-    app.post('/api/progressSteps', function(req, res) {     
-    });
+    app.get('/api/getRunnerCauseChallengeId', function(req, res) {
+        var runnerId = req.query.runnerId;
+        var causeId = req.query.causeId;
+        var challengeId = req.query.challengeId;
 
-    app.get('/api/getSponsorsByRadius', function(req, res) {
-        userModel.find({userRole: 2}).lean().populate(CONSTANT.TABLES.SPONSOR_CHALLENGES).sort('-firstName').exec(function (err, sponsors) {
+        runnerCauseChallengesModel.find({runner: runnerId, cause: causeId, challenge: challengeId}).lean().exec(function (err, runnercausemodel) {
             if (err) {
-               res.json({message:'Error in finding sponsors!'});
+                res.json({message:'Error in finding runnercausemodel!'});
             }
             else {
                 // Sort by DeviceName, case-insensitive
-                res.json(sponsors);
+                res.json(runnercausemodel);
             }
         });
+    });
+
+    app.post('/api/progressSteps', function(req, res) {     
     });
 
     app.post('/api/sponserChallengeList', function(req, res) {
@@ -123,8 +130,8 @@ module.exports = function(app) {
                 res.json({message:'Error in finding sponsors!'});
             }
             else {
-                var latLng = req.query.latLng;
 
+                var latLng = req.query.latLng;
 
                 function locationdistance(lat1, lon1, lat2, lon2, unit) {
                     var radlat1 = Math.PI * lat1/180;
