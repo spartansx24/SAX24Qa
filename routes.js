@@ -117,7 +117,64 @@ module.exports = function(app) {
         });
     });
 
+    app.get('/api/getSponsorsByRadius', function(req, res) {
+        userModel.find({userRole: 2}).lean().sort('-firstName').exec(function (err, sponsors) {
+            if (err) {
+                res.json({message:'Error in finding sponsors!'});
+            }
+            else {
+                var latLng = req.query.latLng;
+
+
+                function locationdistance(lat1, lon1, lat2, lon2, unit) {
+                    var radlat1 = Math.PI * lat1/180;
+                    var radlat2 = Math.PI * lat2/180;
+                    var radlon1 = Math.PI * lon1/180;
+                    var radlon2 = Math.PI * lon2/180;
+                    var theta = lon1-lon2;
+                    var radtheta = Math.PI * theta/180
+                    var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+                    dist = Math.acos(dist);
+                    dist = dist * 180/Math.PI;
+                    dist = dist * 60 * 1.1515;
+                    if (unit=="K") { dist = dist * 1.609344 }
+                    if (unit=="N") { dist = dist * 0.8684 }
+                    return dist;
+                }
+
+                //var geoTools = require("./helper/geo-tools");
+                var splitLatLng = latLng.split(",");
+
+                var lat = splitLatLng[0];
+                var lng = splitLatLng[1];
+                var sponsorsLength = sponsors.length;
+
+                var sponsorsFiltered = [];
+                for(var i=0; i< sponsorsLength; i++){
+                    var sponsorLatLng = sponsors[i].location;
+                    //console.log(sponsorLatLng);
+                    if(sponsorLatLng!==undefined){
+                        var splitSponsorsLocation = sponsorLatLng.split(",");
+                        var distance1 = locationdistance(lat, lng, splitSponsorsLocation[0], splitSponsorsLocation[1], 'K');
+                        if(distance1 <= CONSTANT.TABLES.SPONSOR_RADIUS_LIMIT){
+                            sponsorsFiltered.push(sponsors[i]);
+                        }
+                    }
+                }
+
+                sponserChallangesModel.find({}).lean().exec(function (err, sponsorChallenges) {
+                    if (err) {
+                        res.json({message: 'Error in finding sponsors!'});
+                    }
+                    else {
+                        res.json({sponsors: sponsorsFiltered, challenges: sponsorChallenges});
+                    }
+                });
+            }
+        });
+    });
+
     app.use('/', function(req, res) {        
         res.sendFile(__dirname + '/public/index.html');
     });
-}
+};

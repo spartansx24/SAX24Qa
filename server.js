@@ -10,7 +10,7 @@ var connection = mongoose.connect(database.url);
 var db = mongoose.connection;
 mongoose.connection.on('open', function () {
     console.log("DB connection setup");
-    //seeder.PopulateDB;
+    seeder.PopulateDB;
 });
 
 app.use(express.static(__dirname + '/public'));

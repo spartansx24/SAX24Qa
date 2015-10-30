@@ -3,7 +3,7 @@ var mongoose = restful.mongoose;
 var CONSTANT = require('../utilities/Constant').CONSTANT;
 
 var CauseSchema = mongoose.Schema({
-    name: {
+    firstName: {
         type: String,
         trim: true,
         default: ''
@@ -13,7 +13,22 @@ var CauseSchema = mongoose.Schema({
         ref: CONSTANT.TABLES.USERS,
         required: true
     },
+    description:{
+        type: String
+    },
     target:{
+        type: String
+    },
+    location:{
+        type: String
+    },
+    startDate:{
+        type: String
+    },
+    endDate:{
+        type: String
+    },
+    contactPerson:{
         type: String
     },
     active:{

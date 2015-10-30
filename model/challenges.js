@@ -28,4 +28,4 @@ var ChallengeSchema = mongoose.Schema({
     }
 });
 
-module.exports = restful.model(CONSTANT.TABLES.SPONSOR_CHALLENGES, ChallengeSchema);
+module.exports = restful.model(CONSTANT.TABLES.CHALLENGES, ChallengeSchema);
