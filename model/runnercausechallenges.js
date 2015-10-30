@@ -23,9 +23,6 @@ var RunnerStepsSchema = mongoose.Schema({
         ref: CONSTANT.TABLES.CAUSES,
         required: true
     },
-    updated: {
-        type: Date
-    },
     created: {
         type: Date,
         default: Date.now

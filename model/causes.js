@@ -13,9 +13,6 @@ var CauseSchema = mongoose.Schema({
         ref: CONSTANT.TABLES.USERS,
         required: true
     },
-    updated: {
-        type: Date
-    },
     created: {
         type: Date,
         default: Date.now
