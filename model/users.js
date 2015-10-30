@@ -24,7 +24,7 @@ var UserSchema = new Schema({
         default: ''
 
     },
-    userrole: {
+    userRole: {
         type: Number,
         enum: [1, 2, 3],
         trim: true
@@ -44,6 +44,18 @@ var UserSchema = new Schema({
     },
     dob: {
         type: Date,
+    },
+    runnerName: {
+        type: String,
+        trim: true
+    },
+    ngoName: {
+        type: String,
+        trim: true
+    },
+    sponsorName: {
+        type: String,
+        trim: true
     },
     password: {
         type: String,
