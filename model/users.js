@@ -54,18 +54,6 @@ var UserSchema = mongoose.Schema({
     contactNumber: {
         type: String
     },
-    runnerName: {
-        type: String,
-        trim: true
-    },
-    ngoName: {
-        type: String,
-        trim: true
-    },
-    sponsorName: {
-        type: String,
-        trim: true
-    },
     password: {
         type: String,
         default: '',
