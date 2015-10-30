@@ -19,7 +19,17 @@
                 </div>
                <div class="form-group">
                     <label for="InputEmail">Contact Person</label>
-                    <input name="contact_person" type="text" class="form-control" data-ng-model="addChallengeCtrl.addChallangeField.target" id="inputEmail" class="form-control" placeholder="Challenge Target" required="">
+                    <input name="contact_person" type="text" class="form-control" data-ng-model="addChallengeCtrl.addChallangeField.contact_person" id="inputEmail" class="form-control" placeholder="Challenge Target" required="">
+                    <span data-ng-if="(addChallengeForm.$submitted || addChallengeForm.contact_person.$touched) && addChallengeForm.contact_person.$error.required" class="error-block">Contact Person required.</span>                  
+                </div>
+
+               <div class="form-group">
+                    <label for="InputEmail">Target</label>
+                    <div class="input-group">
+                      <div class="input-group-addon">Rs.</div>
+                       <input name="target" type="text" class="form-control" data-ng-model="addChallengeCtrl.addChallangeField.target" id="inputEmail" class="form-control" placeholder="Target Amount" required="">
+                      <div class="input-group-addon">.00</div>
+                    </div>
                     <span data-ng-if="(addChallengeForm.$submitted || addChallengeForm.target.$touched) && addChallengeForm.target.$error.required" class="error-block">Target required.</span>                  
                 </div>
 

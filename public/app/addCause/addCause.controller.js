@@ -56,15 +56,14 @@
             if(addChallengeForm.$valid) {                
                 $loading.start('commonLoader');
                 var userObj =  StorageUtil.getLocalObject('userObj');
-                var addChallengeobj = {};
-                addChallengeobj.name = this.addChallangeField.name;
-                addChallengeobj.description = this.addChallangeField.desc;
-                addChallengeobj.sponsor = userObj._id;
-                addChallengeobj.target = this.addChallangeField.target;
-                addChallengeobj.contribution = this.addChallangeField.amount;
-                addChallengeobj.challengeLocation = this.addChallangeField.location;
-                addChallengeobj.startTime = $scope.start_date;
-                addChallengeobj.endTime = $scope.end_date;
+                var addCauseobj = {};
+                addCauseobj.firstname = this.addChallangeField.name;
+                addCauseobj.description = this.addChallangeField.desc;
+                addCauseobj.ngo = userObj._id;
+                addCauseobj.target = this.addChallangeField.target;
+                addCauseobj.challengeLocation = this.addChallangeField.location;
+                addCauseobj.startTime = $scope.start_date;
+                addCauseobj.endTime = $scope.end_date;
 
                 AddChallengeService.addChallengeData(addChallengeobj).then(function(result){
                     if(result.status === true) {

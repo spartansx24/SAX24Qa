@@ -27,7 +27,7 @@
             var deferred = $q.defer();
             var postData = addCauseObj;
 
-            $http.post(CONSTANTS.SERVICE_URL + 'api/addCause', postData).then(function(response) {
+            $http.post(CONSTANTS.SERVICE_URL + 'api/addNgoCause', postData).then(function(response) {
                 if(response && response.data) {
                     deferred.resolve(response.data);
                 }                
