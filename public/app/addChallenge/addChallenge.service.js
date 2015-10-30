@@ -11,23 +11,23 @@
 
     angular
         .module('angularApp')
-        .service('RegisterService', RegisterService);
+        .service('AddChallengeService', AddChallengeService);
 
-    RegisterService.$inject = ['$http', '$q', 'CONSTANTS'];
+    AddChallengeService.$inject = ['$http', '$q', 'CONSTANTS'];
 
-    function RegisterService($http, $q, CONSTANTS) {
+    function AddChallengeService($http, $q, CONSTANTS) {
 
         var service = {
-            validateUserLoginDetils: validateUserLoginDetils
+            addChallengeData: addChallengeData
         };
 
         return service;
 
-        function validateUserLoginDetils(userRole, userName, password) {
+        function addChallengeData(addChallengeObj) {
             var deferred = $q.defer();
-            var postData = {'userRole' : userRole, 'email': userName, 'password': password};
+            var postData = addChallengeObj;
 
-            $http.post(CONSTANTS.SERVICE_URL + 'api/validateLogin', postData).then(function(response) {
+            $http.post(CONSTANTS.SERVICE_URL + 'api/addSponsorChallenge', postData).then(function(response) {
                 if(response && response.data) {
                     deferred.resolve(response.data);
                 }                

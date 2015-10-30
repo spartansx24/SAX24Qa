@@ -43,8 +43,6 @@
                 console.log(error);
                 deferred.reject(error);
             });
-
-            deferred.resolve({'content': "Welcome to home page"});
             return deferred.promise;
         }
     }

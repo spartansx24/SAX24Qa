@@ -181,6 +181,16 @@ module.exports = function(app) {
         });
     });
 
+    app.post('/api/addSponsorChallenge', function(req, res) {     
+        var sponserChallangesModelObj = new sponserChallangesModel(req.body);
+        sponserChallangesModelObj.save(function(err, addedchallange){
+            if(err) res.json({'status': false, 'err': err});
+            
+            console.log(addedchallange);
+            res.json({'status': true, 'addedChallangeObj': addedchallange});
+        });
+    });
+    
     app.use('/', function(req, res) {        
         res.sendFile(__dirname + '/public/index.html');
     });

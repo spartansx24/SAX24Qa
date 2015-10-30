@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="row">
+        <form role="form" name="addChallengeForm" novalidate="">
+            <div class="col-lg-6 col-md-6 col-xs-6">
+                <div class="form-group">
+                    <label for="InputEmail">Name</label>
+                    <input name="name" type="text" class="form-control" data-ng-model="addChallengeCtrl.addChallangeField.name" id="inputEmail" class="form-control" placeholder="Challenge Name" required="">
+                    <span data-ng-if="(addChallengeForm.$submitted || addChallengeForm.name.$touched) && addChallengeForm.name.$error.required" class="error-block">Name required.</span>                  
+                </div>
+               <div class="form-group">
+                    <label for="InputEmail">Description</label>
+                    <textarea name="desc" rows="3" class="form-control" data-ng-model="addChallengeCtrl.addChallangeField.desc" id="inputEmail" class="form-control" placeholder="Challenge Description" required=""></textarea>
+                    <span data-ng-if="(addChallengeForm.$submitted || addChallengeForm.desc.$touched) && addChallengeForm.desc.$error.required" class="error-block">Description required.</span>                  
+                </div>
+                <div class="form-group">
+                    <label for="InputEmail">Location</label>
+                    <input name="location" type="text" class="form-control" data-ng-model="addChallengeCtrl.addChallangeField.location" id="inputEmail" class="form-control" placeholder="Location" required="">
+                    <span data-ng-if="(addChallengeForm.$submitted || addChallengeForm.location.$touched) && addChallengeForm.location.$error.required" class="error-block">Location required.</span>                  
+                </div>
+               <div class="form-group">
+                    <label for="InputEmail">Target</label>
+                    <div class="input-group">
+                        <input name="name" type="text" class="form-control" data-ng-model="addChallengeCtrl.addChallangeField.target" id="inputEmail" class="form-control" placeholder="Challenge Target" required="">
+                        <div class="input-group-addon">Steps</div>
+                    </div>
+                    <span data-ng-if="(addChallengeForm.$submitted || addChallengeForm.target.$touched) && addChallengeForm.target.$error.required" class="error-block">Target required.</span>                  
+                </div>
+               <div class="form-group">
+                    <label for="InputEmail">Amount</label>
+                    <div class="input-group">
+                      <div class="input-group-addon">$</div>
+                       <input name="amount" type="text" class="form-control" data-ng-model="addChallengeCtrl.addChallangeField.amount" id="inputEmail" class="form-control" placeholder="Challenge Amount" required="">
+                      <div class="input-group-addon">.00</div>
+                    </div>
+                    <span data-ng-if="(addChallengeForm.$submitted || addChallengeForm.amount.$touched) && addChallengeForm.amount.$error.required" class="error-block">Amount required.</span>                  
+                </div>
+               <div class="form-group">
+                    <label for="InputEmail">Start Date</label>
+                    <p class="input-group">
+                        <input name="start_date" type="text" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="start_date" is-open="status.start_opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                        <span class="input-group-btn">
+                            <button type="button" ng-click="start_open($event)" class="btn btn-default"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </p>
+                </div>
+               <div class="form-group">
+                    <label for="InputEmail">End Date</label>
+                    <p class="input-group">
+                        <input name="end_date" type="text" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="end_date" is-open="status.end_opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                        <span class="input-group-btn">
+                            <button type="button" ng-click="end_open($event)" class="btn btn-default"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </p>                  
+                </div>
+
+                <input type="submit" data-ng-click="addChallengeCtrl.submitForm(addChallengeForm)" name="submit" id="submit" value="Submit" class="btn btn-info btn-lg">
+            </div>
+        </form>
+    </div>
+</div>

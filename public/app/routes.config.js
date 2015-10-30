@@ -36,7 +36,24 @@
                     }]
                 }
             })
+            .when('/addNewChallenge', {
+                templateUrl: 'app/addChallenge/addChallenge.html',
+                controller: 'AddChallengeController',
+                controllerAs: 'addChallengeCtrl',
+                resolve: {
+                    auth: ["$q", "loginAuthenticationFactory", function($q, loginAuthenticationFactory) {
+                        var userId = loginAuthenticationFactory.getLoggedInUserId();
 
+                        if (userId) {
+                            return $q.resolve();
+                        } else {
+                            return $q.reject({
+                                authenticated: false
+                            });
+                        }
+                    }]
+                }
+            })
             .when('/register', {
                 templateUrl: 'app/register/register.html',
                 controller: 'RegisterController',

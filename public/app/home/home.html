@@ -1,5 +1,5 @@
 <div class="row margin-bottom">
-    <div ng-click="routeToAddChallenge()" class="btn btn-primary pull-right"> Add New Challenge </div>
+    <div ng-click="homeCtrl.routeToAddChallenge()" class="btn btn-primary pull-right"> Add New Challenge </div>
 </div>
 <div class="row">
     <table class="table table-bordered">
@@ -8,17 +8,20 @@
             <th>#</th>
             <th>Challenge Name</th>
             <th>Target</th>
+            <th>Amount</th>
             <th>Start Date</th>
             <th>End Date</th>
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="challenge in challangeList">
-            <th scope="row">{{$index}}</th>
-            <td>{{challenge._id}}</td>
+        <tr ng-repeat="challenge in homeCtrl.challangeList">
+
+            <th scope="row">{{$index+1}}</th>
+            <td>{{challenge.name}}</td>
             <td>{{challenge.target}}</td>
-            <td>{{challenge.startTime}}</td>
-            <td>{{challenge.endTime}}</td>
+            <td>{{challenge.contribution}}</td>
+            <td>{{challenge.startTime| date:'dd MMMM yyyy'}}</td>
+            <td>{{challenge.endTime | date:'dd MMMM yyyy'}}</td>
         </tr>    
     </tbody>
     </table> 

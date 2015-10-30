@@ -13,7 +13,8 @@ angular
         'ngRoute',
         'ngAnimate', 
         'toastr',
-        'darthwade.dwLoading'
+        'darthwade.dwLoading',
+        'ui.bootstrap'
     ])
     .config(['$httpProvider', function($httpProvider) {
         $httpProvider.interceptors.push('HttpErrorHandlerService');
