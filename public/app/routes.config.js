@@ -54,6 +54,24 @@
                     }]
                 }
             })
+            .when('/addNewCause', {
+                templateUrl: 'app/addCause/addCause.html',
+                controller: 'AddCauseController',
+                controllerAs: 'addCauseCtrl',
+                resolve: {
+                    auth: ["$q", "loginAuthenticationFactory", function($q, loginAuthenticationFactory) {
+                        var userId = loginAuthenticationFactory.getLoggedInUserId();
+
+                        if (userId) {
+                            return $q.resolve();
+                        } else {
+                            return $q.reject({
+                                authenticated: false
+                            });
+                        }
+                    }]
+                }
+            })
             .when('/register', {
                 templateUrl: 'app/register/register.html',
                 controller: 'RegisterController',

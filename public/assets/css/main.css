@@ -66,8 +66,9 @@ body {
   margin: 0 auto;
 }
 
-.margin-bottom {
+.margin-top-bottom {
   margin-bottom: 10px;
+  margin-top: 13px;
 }
 
 .form-signin .form-signin-heading,

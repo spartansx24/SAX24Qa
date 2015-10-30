@@ -241,6 +241,16 @@ module.exports = function(app) {
         });
     });
 
+    app.post('/api/addNgoCause', function(req, res) {
+        var causesModelObj = new causesModel(req.body);
+        causesModelObj.save(function(err, addedcause){
+            if(err) res.json({'status': false, 'err': err});
+
+            console.log(addedcause);
+            res.json({'status': true, 'causeObj': addedcause});
+        });
+    });
+
     app.use('/', function(req, res) {        
         res.sendFile(__dirname + '/public/index.html');
     });

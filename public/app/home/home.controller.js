@@ -19,6 +19,7 @@
     	var vm = this;
         vm.loadHomePageData = function() {
             var userObj =  StorageUtil.getLocalObject('userObj');
+            vm.userObj = userObj;
             if(userObj.userRole == 2) {
                 HomeService.getChallengeList(userObj._id).then(function(result) {
                     vm.challangeList = result;
@@ -37,10 +38,10 @@
             }
         }
 
-        vm.routeToAddChallenge = function() {
-            $location.path('/addNewChallenge');            
+        vm.routeToAddPage = function(route) {
+            $location.path('/'+route);            
         }
-        
+
         vm.loadHomePageData();
     }
 
