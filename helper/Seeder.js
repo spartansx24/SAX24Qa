@@ -14,7 +14,7 @@ PopulateDB.prototype.writeToDB = function(){
 
 		var locals = {};
 
-		var roles = [{"id":1,"name":"sponser"}, {"id":2,"name":"ngo"}, {"id":3,"name":"user"}];
+		var roles = [{"Id":1,"Name":"sponser"}, {"Id":2,"Name":"ngo"}, {"Id":3,"Name":"user"}];
 		
 		async.series([function(callback){
 			roleModel.find({}, function(err, rolesInserted){
@@ -25,11 +25,11 @@ PopulateDB.prototype.writeToDB = function(){
 						roleModelObj.save(function(err, role){
 							console.log('Roles inserted: ' + role._id);
 							//locals[CONSTANT.TABLES.ROLE][admin.id] = admin._id;
-							callback();
+							//callback();
 						});
 					});
 				}else{
-					callback();
+					//callback();
 				}
 			});
 		}		
