@@ -38,19 +38,19 @@
             })
 
             .when('/register', {
-                templateUrl: 'app/home/register.html',
-                controller: 'UserRegisterController',
-                controllerAs: 'userRegisterCtrl',
+                templateUrl: 'app/register/register.html',
+                controller: 'RegisterController',
+                controllerAs: 'registerCtrl',
                 resolve: {
                     auth: ["$q", "loginAuthenticationFactory", function($q, loginAuthenticationFactory) {
                         var userId = loginAuthenticationFactory.getLoggedInUserId();
 
-                        if (userId) {
-                            return $q.resolve();
-                        } else {
+                        if (userId) {                                
                             return $q.reject({
-                                authenticated: false
+                                authenticated: true
                             });
+                        } else {
+                            return $q.resolve();
                         }
                     }]
                 }

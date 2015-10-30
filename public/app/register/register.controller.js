@@ -11,11 +11,11 @@
 
     angular
         .module('angularApp')
-        .controller('LoginController', LoginController);
+        .controller('RegisterController', RegisterController);
 
-    LoginController.$inject = ['LoginService', 'toastr', '$location', 'StorageUtil', '$loading'];
+    RegisterController.$inject = ['RegisterService', 'toastr', '$location', 'StorageUtil', '$loading'];
 
-    function LoginController( LoginService, toastr, $location, StorageUtil, $loading) {
+    function RegisterController( RegisterService, toastr, $location, StorageUtil, $loading) {
             
         this.submitForm = function(loginForm) {
             if(loginForm.$valid) {                
