@@ -1,11 +1,9 @@
 var restful = require('node-restful');
 var mongoose = restful.mongoose;
 var CONSTANT = require('../utilities/Constant').CONSTANT;
-var crypto = require('crypto');
-var validator = require('validator');
 
 
-var UserSchema = new Schema({
+var UserSchema = mongoose.Schema({
     firstName: {
         type: String,
         trim: true,
@@ -34,6 +32,7 @@ var UserSchema = new Schema({
         enum: ['Male', 'Female'],
         trim: true
     },
+    /*
     height: {
         type: String,
         trim: true
@@ -42,8 +41,18 @@ var UserSchema = new Schema({
         type: String,
         trim: true
     },
+    */
+    bandId: {
+        type: String
+    },
     dob: {
-        type: Date,
+        type: Date
+    },
+    photo: {
+        type: String
+    },
+    contactNumber: {
+        type: String
     },
     runnerName: {
         type: String,
