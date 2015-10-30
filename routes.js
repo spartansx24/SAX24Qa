@@ -71,10 +71,10 @@ module.exports = function(app) {
 
     app.post('/api/insertRunStep', function(req, res) {
         var reqObj = {};
-        var runnercausechallengeId = req.query.runnerCauseChallengeId;
+        var runnercausechallengeId = req.body.runnerCauseChallengeId;
         reqObj.runnercausechallenge = runnercausechallengeId;
-        reqObj.dateTime = req.query.dateTime;
-        reqObj.totalDistance = req.query.totalDistance;
+        reqObj.dateTime = req.body.dateTime;
+        reqObj.totalDistance = req.body.totalDistance;
 
         reqObj.totalSteps = parseFloat(totalDistance/76.2);
 
@@ -88,6 +88,7 @@ module.exports = function(app) {
                     res.json({message: 'Error in finding sponsorcausechallenges!'});
                 }
                 else {
+
                     var sumSteps = 0;
                     var rowsLength = sponsorcausechallenges.length;
                     for(var i=0; i<rowsLength; i++ ){
@@ -113,6 +114,7 @@ module.exports = function(app) {
                     });
                 }
             });
+
         });
     });
 
