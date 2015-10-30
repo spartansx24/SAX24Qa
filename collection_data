@@ -51,7 +51,7 @@
 }
 
 /*RunnerSteps*/
-{
+{	
     "runnercausechallenge": "ObjectId",
     "totalSteps": "Cause One Name",
     "totalDistance": "Cause One Description",

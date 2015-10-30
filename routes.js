@@ -1,6 +1,6 @@
 var userModel = require('./model/users');
 var causesModel = require('./model/causes');
-var runerStepsModel = require('./model/runersteps');
+var runnerStepsModel = require('./model/runersteps');
 var runnerCauseChallengesModel = require('./model/runnercausechallenges');
 var sponserChallangesModel = require('./model/sponsorchallenges');
 var CONSTANT = require('./utilities/Constant').CONSTANT;
@@ -70,9 +70,50 @@ module.exports = function(app) {
     });
 
     app.post('/api/insertRunStep', function(req, res) {
-        var runnerCauseChallengeId = req.query.runnerCauseChallengeId;
-        var totalSteps = req.query.totalSteps;
-        var stepUnit = req.query.stepUnit;
+        var reqObj = {};
+        var runnercausechallengeId = req.query.runnerCauseChallengeId;
+        reqObj.runnercausechallenge = runnercausechallengeId;
+        reqObj.dateTime = req.query.dateTime;
+        reqObj.totalDistance = req.query.totalDistance;
+
+        reqObj.totalSteps = parseFloat(totalDistance/76.2);
+
+        var stepModelObj = new runnerStepsModel(reqObj);
+        stepModelObj.save(function(err, stepAddedObj){
+            if(err) res.json({'err': err});
+
+
+            stepModelObj.find({_id:runnercausechallengeId}).lean().exec(function (err, sponsorcausechallenges) {
+                if (err) {
+                    res.json({message: 'Error in finding sponsorcausechallenges!'});
+                }
+                else {
+                    var sumSteps = 0;
+                    var rowsLength = sponsorcausechallenges.length;
+                    for(var i=0; i<rowsLength; i++ ){
+                        var curRow = sponsorcausechallenges[i];
+                        sumSteps += parseInt(curRow.totalSteps);
+                    }
+
+                    runnerCauseChallengesModel.find({_id:runnercausechallengeId}, function(err, runcausechallenge){
+                        if (err) {
+                            res.json({message:'Error in finding runcausechallenge!'});
+                        }
+                        else {
+                            var challengeId = runcausechallenge[0].challenge;
+
+                            sponserChallangesModel.find({_id: challengeId}, function(err, challenge){
+                                if (err) {
+                                    res.json({message:'Error in finding challenge!'});
+                                }
+                                var tagetChallenge = challenge[0].steps;
+                                res.json({sumTotalSteps:sumSteps,  targetSteps: tagetChallenge});
+                            });
+                        }
+                    });
+                }
+            });
+        });
     });
 
     app.get('/api/getRunnerCauseChallengeId', function(req, res) {
@@ -85,8 +126,17 @@ module.exports = function(app) {
                 res.json({message:'Error in finding runnercausemodel!'});
             }
             else {
-                // Sort by DeviceName, case-insensitive
-                res.json(runnercausemodel);
+                res.json({id:runnercausemodel[0]._id});
+                /*
+                runnerCauseChallengesModel.find({_id:runnerCauseChallengeId}, function(err, runcausechallenge){
+                    if (err) {
+                        res.json({message:'Error in finding runcausechallenge!'});
+                    }
+                    else {
+                        res.json(runcausechallenge.challenge);
+                    }
+                });
+                */
             }
         });
     });
@@ -139,7 +189,7 @@ module.exports = function(app) {
                     var radlon1 = Math.PI * lon1/180;
                     var radlon2 = Math.PI * lon2/180;
                     var theta = lon1-lon2;
-                    var radtheta = Math.PI * theta/180
+                    var radtheta = Math.PI * theta/180;
                     var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
                     dist = Math.acos(dist);
                     dist = dist * 180/Math.PI;
@@ -181,16 +231,16 @@ module.exports = function(app) {
         });
     });
 
-    app.post('/api/addSponsorChallenge', function(req, res) {     
+    app.post('/api/addSponsorChallenge', function(req, res) {
         var sponserChallangesModelObj = new sponserChallangesModel(req.body);
         sponserChallangesModelObj.save(function(err, addedchallange){
             if(err) res.json({'status': false, 'err': err});
-            
+
             console.log(addedchallange);
             res.json({'status': true, 'addedChallangeObj': addedchallange});
         });
     });
-    
+
     app.use('/', function(req, res) {        
         res.sendFile(__dirname + '/public/index.html');
     });
