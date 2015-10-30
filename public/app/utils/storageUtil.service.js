@@ -65,7 +65,7 @@
         function setLocalObject(key, Obj) {
             if ($window.localStorage) {
                 if(key && Obj && typeof(Obj) === 'object') {
-                    $window.localStorage.setItem(key, $window.JSON.stringify(value));
+                    $window.localStorage.setItem(key, $window.JSON.stringify(Obj));
                     return true;
                 } else {
                     $rootScope.addError({message:'StorageUtil Error', reason:'Invalid Key or Obj supplied in setLocalObject'});

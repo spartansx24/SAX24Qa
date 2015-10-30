@@ -24,8 +24,12 @@
         return service;
 
         function getLoggedInUserId() {            
-            var userId = StorageUtil.getLocal('userId');
-            return userId;
+            var userObj = StorageUtil.getLocal('userObj');
+            if(userObj) {
+                userObj = JSON.parse(userObj);
+                return (userObj && userObj._id);
+            }
+            
         }
     }
 
