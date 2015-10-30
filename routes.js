@@ -71,27 +71,6 @@ module.exports = function(app) {
     app.post('/api/progressSteps', function(req, res) {     
     });
 
-
-    app.post('/api/validateLogin', function(req, res) {     
-        
-        var email = req.body.email;
-        var password = req.body.password; 
-        var userRole = req.body.userRole;
-        console.log(email, password, userRole);
-        userModel.find({
-            email:email,
-            password: password,
-            userRole: userRole
-        }, function(err, users){
-            console.log(users);
-            if(users && users.length > 0) {
-               res.json({'status': true, 'userObj': users[0]}); 
-            } else {
-               res.json({'status': false, 'msg': 'Invalid User details'});
-            }           
-        });
-    });
-
     var distance = function (lat1, lng1, lat2, lng2) {
         if (lat1.lat && lng1.lat) {
             lat2 = lng1.lat;
@@ -127,6 +106,35 @@ module.exports = function(app) {
         });
     });
 
+    app.post('/api/sponserChallengeList', function(req, res) {
+        
+        var sponserId = req.body.sponserId;
+
+        sponserChallangesModel.find({sponsor: sponserId}, function(err, challenges){
+            console.log(challenges);
+            res.json(challenges);
+        });    
+    });
+
+    app.post('/api/validateLogin', function(req, res) {     
+        
+        var email = req.body.email;
+        var password = req.body.password; 
+        var userRole = req.body.userRole;
+        console.log(email, password, userRole);
+        userModel.find({
+            email:email,
+            password: password,
+            userRole: userRole
+        }, function(err, users){
+            console.log(users);
+            if(users && users.length > 0) {
+               res.json({'status': true, 'userObj': users[0]}); 
+            } else {
+               res.json({'status': false, 'msg': 'Invalid User details'});
+            }           
+        });
+    });
 
     app.use('/', function(req, res) {        
         res.sendFile(__dirname + '/public/index.html');

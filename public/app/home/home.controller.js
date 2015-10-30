@@ -13,20 +13,25 @@
         .module('angularApp')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['HomeService', 'StorageUtil', '$location'];
+    HomeController.$inject = ['$rootScope', 'HomeService', 'StorageUtil', '$location'];
 
-    function HomeController(HomeService, StorageUtil, $location) {
+    function HomeController($rootScope, HomeService, StorageUtil, $location) {
     	var vm = this;
         vm.loadHomePageData = function() {
-            HomeService.getChallengeList().then(function(result) {
-                vm.content = result.content;
-            }, function(error){
+            var userObj =  StorageUtil.getLocalObject('userObj');
+            if(userObj.userRole == 2) {
+                HomeService.getChallengeList(userObj._id).then(function(result) {
+                    vm.challangeList = result;
+                }, function(error){
 
-            });
+                });
+            } else {
+
+            }
         }
 
-        vm.logoutUser = function() {
-            var status = StorageUtil.removeLocal('userId');
+        $rootScope.logoutUser = function() {
+            var status = StorageUtil.removeLocal('userObj');
             if(status) {
                 $location.path('/login');
             }

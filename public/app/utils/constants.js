@@ -13,6 +13,7 @@
         .module('UtilApp')
         .constant('CONSTANTS', {
             PRODUCTION_ENV: true,
+            SERVICE_URL: 'http://localhost:8080/', 
             NETWORK_ERROR_MSG: {
                 STATUS_0: 'The server is unreachable.',
                 STATUS_401: 'Service request error..',
