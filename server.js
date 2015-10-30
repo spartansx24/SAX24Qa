@@ -5,13 +5,18 @@ var restful = require('node-restful');
 var mongoose = restful.mongoose;
 var seeder = require('./helper/Seeder.js');
 var database = require('./config/database');
-
+var bodyParser      = require('body-parser');
 var connection = mongoose.connect(database.url);
 var db = mongoose.connection;
 mongoose.connection.on('open', function () {
     console.log("DB connection setup");
     seeder.PopulateDB;
-}); 
+});
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
 require('./routes.js')(app);
 
