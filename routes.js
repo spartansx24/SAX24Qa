@@ -9,9 +9,7 @@ module.exports = function(app) {
     userModel.methods(['get', 'post', 'delete']);
     userModel.register(app, '/api/user');
 
-    app.get('/', function(req, res) {        
-        res.sendfile('./public/index.html');
-    });
+
 
     app.post('/api/register', function(req, res) {     
         console.log(req);
@@ -73,19 +71,27 @@ module.exports = function(app) {
     });
 
 
-
-
     app.post('/api/validateLogin', function(req, res) {     
         
-        var username = req.body.email;
+        var email = req.body.email;
         var password = req.body.password; 
-        
+        var userRole = req.body.userRole;
+        console.log(email, password, userRole);
         userModel.find({
-            email:email
+            email:email,
+            password: password,
+            userRole: userRole
         }, function(err, users){
             console.log(users);
-
-            //res.json(users);
+            if(users && users.length > 0) {
+               res.json({'status': true, 'userObj': users[0]}); 
+            } else {
+               res.json({'status': false, 'msg': 'Invalid User details'});
+            }           
         });
+    });
+
+    app.use('/', function(req, res) {        
+        res.sendFile(__dirname + '/public/index.html');
     });
 }

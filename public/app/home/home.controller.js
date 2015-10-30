@@ -18,7 +18,7 @@
     function HomeController(HomeService, StorageUtil, $location) {
     	var vm = this;
         vm.loadHomePageData = function() {
-            HomeService.getHomePageData().then(function(result) {
+            HomeService.getChallengeList().then(function(result) {
                 vm.content = result.content;
             }, function(error){
 
