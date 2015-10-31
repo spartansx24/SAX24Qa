@@ -109,9 +109,9 @@
                     }]
                 }
             })
-            .otherwise({
-                redirectTo: '/home'
-            });
+            // .otherwise({
+            //     redirectTo: '/home'
+            // });
         $locationProvider.html5Mode(true);
     }
 
