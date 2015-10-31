@@ -43,7 +43,7 @@
                                 </div>
                                 <div class="form-group">
                                     <input type="submit" data-ng-click="registerCtrl.registerSponsorUser(SponsorRegisterForm)" name="submit" id="submit" value="Sign Up" class="btn btn-success">
-                                    <button type="button" class="btn btn-link">Back</button>
+                                    <button type="button" class="btn btn-link" ng-click="registerCtrl.setRegisterBackPage();">Back</button>
                                 </div>
                             </div>
                         </form>
@@ -99,7 +99,7 @@
                                     <span data-ng-if="(NgoRegisterForm.$submitted || NgoRegisterForm.password.$touched) && NgoRegisterForm.password.$error.required" class="error-block">Password Required.</span>
                                 </div>
                                 <input type="submit" data-ng-click="registerCtrl.registerNgoUser(NgoRegisterForm)" name="submit" id="submit" value="Sign Up" class="btn btn-info btn-lg">
-                                <button type="button" class="btn btn-link btn-lg pull-right">Back</button>
+                                <button type="button" class="btn btn-link btn-lg pull-right" ng-click="registerCtrl.setRegisterBackPage();">Back</button>
                             </div>
                         </form>
                     </div>

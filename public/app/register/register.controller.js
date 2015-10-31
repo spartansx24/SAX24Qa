@@ -90,6 +90,10 @@
                 });
             }
         };
+
+        this.setRegisterBackPage = function(){
+            $location.path("/login");
+        };
     }
 
 })();
