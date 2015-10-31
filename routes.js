@@ -61,7 +61,7 @@ module.exports = function(app) {
         }, function(err, users){
             if(err) res.json({'err': err});
 
-            console.log(users);
+            //console.log(users);
             if(users && users.length > 0) {
                 res.json({'status': false, 'msg': 'user already exist'});
             } else {

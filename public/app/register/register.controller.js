@@ -30,7 +30,7 @@
                 regObj.password = this.registerField.password;
 
 
-                RegisterService.registerSponsor(regObj).then(function(result){
+                RegisterService.registerSponsorUser(regObj).then(function(result){
                     if(result.status === true) {
                         // toastr.success('You are valid User', {
                         //   closeButton: true
@@ -68,7 +68,7 @@
                 regObj.contactPerson = this.registerField.contactPerson;
                 regObj.password = this.registerField.password;
 
-                RegisterService.registerNgo(regObj).then(function(result){
+                RegisterService.registerNgoUser(regObj).then(function(result){
                     if(result.status === true) {
                         // toastr.success('You are valid User', {
                         //   closeButton: true
