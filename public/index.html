@@ -50,8 +50,12 @@
                         <span data-ng-if="loggedIn" data-ng-click="logoutUser()">Logout </span>
                     </div>
                 </div>
-                <div class="row" data-ng-if="!loggedIn">
-                    <img src="assets/images/banner.jpg" class="img-responsive"/>
+                <div class="row" data-ng-if="!showLaunchPage">
+                    <img src="assets/images/banner_without_btn.jpg" class="img-responsive"/>
+                    <div class="button-blocks">
+                        <img src="assets/images/btn_blue.png" class="create-challenge"/>
+                        <img src="assets/images/btn_pink.png" class="create-course"/>
+                    </div>
                 </div>
             </div>
         </div>
