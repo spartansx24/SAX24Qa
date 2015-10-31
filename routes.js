@@ -49,10 +49,10 @@ module.exports = function(app) {
     });
 
     app.post('/api/causesList', function(req, res) {  
-        causesModel.find({}, function(err, causes){
+        causesModel.find({}).sort('-created').exec(function(err, causes){
             console.log(causes);
             res.json(causes);
-        });    
+        });
     });
 
     app.post('/api/sponsersList', function(req, res) { 
@@ -220,7 +220,7 @@ module.exports = function(app) {
                     }
                 }
 
-                sponserChallangesModel.find({}).lean().exec(function (err, sponsorChallenges) {
+                sponserChallangesModel.find({}).lean().sort('-created').exec(function (err, sponsorChallenges) {
                     if (err) {
                         res.json({message: 'Error in finding sponsors!'});
                     }

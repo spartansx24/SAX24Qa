@@ -1,7 +1,7 @@
 var restful = require('node-restful');
 var async = require('async');
 var mongoose = restful.mongoose;
-var userModel = require('../model/runnercausechallenges');
+var userModel = require('../model/runersteps');
 var CONSTANT = require('../utilities/Constant');
 
 function PopulateDB() {
@@ -16,65 +16,88 @@ PopulateDB.prototype.writeToDB = function () {
 
         var sponsors = [
             {
-                "runner": "5633a38a91adb3001f529aed",
-                "cause": "5633cab783ac69fc00e6d592",
-                "challenge": "5633c1f380afb33c0db468ab"
+                "runnercausechallenge": "5633cff5b248e0901e23f3b1",
+                "totalSteps": 10000,
+                "totalDistance": 7.5,
+                "dateTime": "2015-10-20T09:16:33.823Z"
             },
             {
-                "runner": "5633a38a91adb3001f529aed",
-                "cause": "5633cab783ac69fc00e6d597",
-                "challenge": "5633c1f380afb33c0db468b0"
+                "runnercausechallenge": "5633cff5b248e0901e23f3b1",
+                "totalSteps": 10000,
+                "totalDistance": 7.5,
+                "dateTime": "2015-10-21T09:16:33.823Z"
             },
             {
-                "runner": "5633a38a91adb3001f529af0",
-                "cause": "5633cab783ac69fc00e6d596",
-                "challenge": "5633c1f380afb33c0db468ae"
+                "runnercausechallenge": "5633cff5b248e0901e23f3b1",
+                "totalSteps": 10000,
+                "totalDistance": 7.5,
+                "dateTime": "2015-10-22T09:16:33.823Z"
             },
             {
-                "runner": "5633a38a91adb3001f529aef",
-                "cause": "5633cab783ac69fc00e6d597",
-                "challenge": "5633c1f380afb33c0db468ad"
+                "runnercausechallenge": "5633cff5b248e0901e23f3b1",
+                "totalSteps": 10000,
+                "totalDistance": 7.5,
+                "dateTime": "2015-10-23T09:16:33.823Z"
             },
             {
-                "runner": "5633a38a91adb3001f529af1",
-                "cause": "5633cab783ac69fc00e6d593",
-                "challenge": "5633c1f380afb33c0db468ae"
+                "runnercausechallenge": "5633cff5b248e0901e23f3b1",
+                "totalSteps": 10000,
+                "totalDistance": 7.5,
+                "dateTime": "2015-10-24T09:16:33.823Z"
             },
             {
-                "runner": "5633a38a91adb3001f529aee",
-                "cause": "5633cab783ac69fc00e6d594",
-                "challenge": "5633c1f380afb33c0db468b0"
+                "runnercausechallenge": "5633cff5b248e0901e23f3b1",
+                "totalSteps": 10000,
+                "totalDistance": 7.5,
+                "dateTime": "2015-10-25T09:16:33.823Z"
             },
             {
-                "runner": "5633a38a91adb3001f529af5",
-                "cause": "5633cab783ac69fc00e6d596",
-                "challenge": "5633c1f380afb33c0db468b4"
+                "runnercausechallenge": "5633cff5b248e0901e23f3b1",
+                "totalSteps": 10000,
+                "totalDistance": 7.5,
+                "dateTime": "2015-10-26T09:16:33.823Z"
             },
             {
-                "runner": "5633a38a91adb3001f529af4",
-                "cause": "5633cab783ac69fc00e6d596",
-                "challenge": "5633c1f380afb33c0db468b2"
+                "runnercausechallenge": "5633cff5b248e0901e23f3b1",
+                "totalSteps": 10000,
+                "totalDistance": 7.5,
+                "dateTime": "2015-10-25T09:16:33.823Z"
             },
             {
-                "runner": "5633a38a91adb3001f529af2",
-                "cause": "5633cab783ac69fc00e6d596",
-                "challenge": "5633c1f380afb33c0db468b3"
-            }
-            ,
-            {
-                "runner": "5633a38a91adb3001f529af3",
-                "cause": "5633cab783ac69fc00e6d597",
-                "challenge": "5633c1f380afb33c0db468ac"
+                "runnercausechallenge": "5633cff5b248e0901e23f3b1",
+                "totalSteps": 7000,
+                "totalDistance": 7.5,
+                "dateTime": "2015-10-26T09:16:33.823Z"
             },
             {
-                "runner": "5633a38a91adb3001f529af5",
-                "cause": "5633cab783ac69fc00e6d597",
-                "challenge": "5633c1f380afb33c0db468b1"
+                "runnercausechallenge": "5633cff5b248e0901e23f3b3",
+                "totalSteps": 7000,
+                "totalDistance": 7.5,
+                "dateTime": "2015-10-27T09:16:33.823Z"
             },
             {
-                "runner": "5633a38a91adb3001f529af0",
-                "cause": "5633cab783ac69fc00e6d596",
-                "challenge": "5633c1f380afb33c0db468b1"
+                "runnercausechallenge": "5633cff5b248e0901e23f3b3",
+                "totalSteps": 7000,
+                "totalDistance": 7.5,
+                "dateTime": "2015-10-28T09:16:33.823Z"
+            },
+            {
+                "runnercausechallenge": "5633cff5b248e0901e23f3b3",
+                "totalSteps": 7000,
+                "totalDistance": 7.5,
+                "dateTime": "2015-10-29T09:16:33.823Z"
+            },
+            {
+                "runnercausechallenge": "5633cff5b248e0901e23f3b3",
+                "totalSteps": 7000,
+                "totalDistance": 7.5,
+                "dateTime": "2015-10-30T09:16:33.823Z"
+            },
+            {
+                "runnercausechallenge": "5633cff5b248e0901e23f3b3",
+                "totalSteps": 7000,
+                "totalDistance": 7.5,
+                "dateTime": "2015-10-31T09:16:33.823Z"
             }
         ];
 
@@ -85,7 +108,7 @@ PopulateDB.prototype.writeToDB = function () {
                         async.forEach(sponsors, function (eachSponsor) {
                             var sponsorsModelObj = new userModel(eachSponsor);
                             sponsorsModelObj.save(function (err, sponsor) {
-                                console.log('Causes inserted: ' + sponsor._id);
+                                console.log('Runner Steps inserted: ' + sponsor._id);
                                 //locals[CONSTANT.TABLES.ROLE][admin.id] = admin._id;
                                 //callback();
                             });
