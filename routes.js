@@ -107,41 +107,43 @@ module.exports = function(app) {
 
         var stepModelObj = new runnerStepsModel(reqObj);
         stepModelObj.save(function(err, stepAddedObj){
-            if(err) res.json({'err': err});
-
-            console.log("stepAddedObj", stepAddedObj);
-            runnerStepsModel.find({'runnercausechallenge':runnercausechallengeId}, function (err, sponsorcausechallenges) {
-                if (err) {
-                    res.json({message: 'Error in finding sponsorcausechallenges!'});
-                }
-                else {
-                    console.log(sponsorcausechallenges);
-                    var sumSteps = 0;
-                    var rowsLength = sponsorcausechallenges.length;
-                    for(var i=0; i<rowsLength; i++ ){
-                        var curRow = sponsorcausechallenges[i];
-                        sumSteps += parseInt(curRow.totalSteps);
+            if(err) {
+                res.json({'err': err});
+            } else {
+                console.log("stepAddedObj", stepAddedObj);
+                runnerStepsModel.find({'runnercausechallenge':runnercausechallengeId}, function (err, sponsorcausechallenges) {
+                    if (err) {
+                        res.json({message: 'Error in finding sponsorcausechallenges!'});
                     }
-
-                    runnerCauseChallengesModel.find({_id:runnercausechallengeId}, function(err, runcausechallenge){
-                        if (err) {
-                            res.json({message:'Error in finding runcausechallenge!'});
+                    else {
+                        console.log(sponsorcausechallenges);
+                        var sumSteps = 0;
+                        var rowsLength = sponsorcausechallenges.length;
+                        for(var i=0; i<rowsLength; i++ ){
+                            var curRow = sponsorcausechallenges[i];
+                            sumSteps += parseInt(curRow.totalSteps);
                         }
-                        else {
-                            var challengeId = runcausechallenge[0].challenge;
 
-                            sponserChallangesModel.find({_id: challengeId}, function(err, challenge){
-                                if (err) {
-                                    res.json({message:'Error in finding challenge!'});
-                                }
-                                var tagetChallenge = challenge[0].steps;
-                                res.json({sumTotalSteps:sumSteps,  targetSteps: tagetChallenge});
-                            });
-                        }
-                    });
-                }
-            });
+                        runnerCauseChallengesModel.find({_id:runnercausechallengeId}, function(err, runcausechallenge){
+                            if (err) {
+                                res.json({message:'Error in finding runcausechallenge!'});
+                            }
+                            else {
+                                var challengeId = runcausechallenge[0].challenge;
 
+                                sponserChallangesModel.find({_id: challengeId}, function(err, challenge){
+                                    if (err) {
+                                        res.json({message:'Error in finding challenge!'});
+                                    } else {
+                                        var tagetChallenge = challenge[0].steps;
+                                        res.json({sumTotalSteps:sumSteps,  targetSteps: tagetChallenge});
+                                    }                                    
+                                });
+                            }
+                        });
+                    }
+                }); 
+            }
         });
     });
 
@@ -162,9 +164,6 @@ module.exports = function(app) {
                 }
             }
         });
-    });
-
-    app.post('/api/progressSteps', function(req, res) {     
     });
 
     app.post('/api/sponserChallengeList', function(req, res) {
