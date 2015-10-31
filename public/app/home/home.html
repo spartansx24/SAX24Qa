@@ -1,75 +1,80 @@
-<uib-tabset justified="true">
-    <uib-tab active="true" data-ng-if="(homeCtrl.userObj.userRole == 2)" heading="Challenges">
-        <div class="row margin-top-bottom">
-            <div ng-click="homeCtrl.routeToAddPage('addNewChallenge')" class="btn btn-primary pull-right"> Add New Challenge </div>
-        </div>
-        <div class="row">
-            <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Challenge Name</th>
-                    <th>Target</th>
-                    <th>Amount</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="challenge in homeCtrl.challangeList">
-                    <th scope="row">{{$index+1}}</th>
-                    <td>{{challenge.name}}</td>
-                    <td>{{challenge.target}}</td>
-                    <td>{{challenge.contribution}}</td>
-                    <td>{{challenge.startTime| date:'dd MMMM yyyy'}}</td>
-                    <td>{{challenge.endTime | date:'dd MMMM yyyy'}}</td>
-                </tr>    
-            </tbody>
-            </table> 
-        </div>
-    </uib-tab>
-    <uib-tab active="true" data-ng-if="(homeCtrl.userObj.userRole == 3)" heading="Causes">
-        <div class="row margin-top-bottom">
-            <div ng-click="homeCtrl.routeToAddPage('addNewCause')" class="btn btn-primary pull-right"> Add New Cause</div>
-        </div>
-        <div class="row">
-            <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Cause</th>
-                    <th>Contact Person</th>
-                    <th>Target</th>                    
-                    <th>Start Date</th>
-                    <th>End Date</th>                    
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="cause in homeCtrl.causeList">
-                    <th scope="row">{{$index+1}}</th>
-                    <td>{{cause.firstName}}</td>
-                    <th>{{cause.contactPerson}}</th>
-                    <td>{{cause.target}}</td>
-                    <td>{{cause.startDate| date:'dd MMMM yyyy'}}</td>
-                    <td>{{cause.endDate | date:'dd MMMM yyyy'}}</td>
-                </tr>    
-            </tbody>
-            </table> 
-        </div>
-    </uib-tab>
-    <uib-tab data-ng-if="(homeCtrl.userObj.userRole == 2)" heading="Reports">
-        <div class="row margin-top-bottom">
-            <img src="assets/images/1.png" width="800"/>
-            <img src="assets/images/2.png" width="800"/>
-        </div>
-    </uib-tab>
+<div class="container">
+    <div class="row margin-top-bottom">
+        <div class="col-lg-10 col-md-10 center-block" style="float:none">
+            <uib-tabset justified="true">
+                <uib-tab active="true" data-ng-if="(homeCtrl.userObj.userRole == 2)" heading="Challenges">
+                    <div class="row margin-top-bottom">
+                        <div ng-click="homeCtrl.routeToAddPage('addNewChallenge')" class="btn btn-primary pull-right"> Add New Challenge </div>
+                    </div>
+                    <div class="row">
+                        <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Challenge Name</th>
+                                <th>Target</th>
+                                <th>Amount</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="challenge in homeCtrl.challangeList">
+                                <th scope="row">{{$index+1}}</th>
+                                <td>{{challenge.name}}</td>
+                                <td>{{challenge.target}}</td>
+                                <td>{{challenge.contribution}}</td>
+                                <td>{{challenge.startTime| date:'dd MMMM yyyy'}}</td>
+                                <td>{{challenge.endTime | date:'dd MMMM yyyy'}}</td>
+                            </tr>    
+                        </tbody>
+                        </table> 
+                    </div>
+                </uib-tab>
+                <uib-tab active="true" data-ng-if="(homeCtrl.userObj.userRole == 3)" heading="Causes">
+                    <div class="row margin-top-bottom">
+                        <div ng-click="homeCtrl.routeToAddPage('addNewCause')" class="btn btn-primary pull-right"> Add New Cause</div>
+                    </div>
+                    <div class="row">
+                        <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Cause</th>
+                                <th>Contact Person</th>
+                                <th>Target</th>                    
+                                <th>Start Date</th>
+                                <th>End Date</th>                    
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="cause in homeCtrl.causeList">
+                                <th scope="row">{{$index+1}}</th>
+                                <td>{{cause.firstName}}</td>
+                                <th>{{cause.contactPerson}}</th>
+                                <td>{{cause.target}}</td>
+                                <td>{{cause.startDate| date:'dd MMMM yyyy'}}</td>
+                                <td>{{cause.endDate | date:'dd MMMM yyyy'}}</td>
+                            </tr>    
+                        </tbody>
+                        </table> 
+                    </div>
+                </uib-tab>
+                <uib-tab data-ng-if="(homeCtrl.userObj.userRole == 2)" heading="Reports">
+                    <div class="row margin-top-bottom">
+                        <img src="assets/images/1.png" width="800"/>
+                        <img src="assets/images/2.png" width="800"/>
+                    </div>
+                </uib-tab>
 
-    <uib-tab data-ng-if="(homeCtrl.userObj.userRole == 3)" heading="Reports">
-        <div class="row margin-top-bottom">
-            <img src="assets/images/3.png" width="800"/>
-            <img src="assets/images/4.png" width="800"/>
+                <uib-tab data-ng-if="(homeCtrl.userObj.userRole == 3)" heading="Reports">
+                    <div class="row margin-top-bottom">
+                        <img src="assets/images/3.png" width="800"/>
+                        <img src="assets/images/4.png" width="800"/>
+                    </div>
+                </uib-tab>
+            </uib-tabset>
         </div>
-    </uib-tab>
-</uib-tabset>
-
+    </div>
+</div>
 
