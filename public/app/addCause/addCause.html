@@ -4,22 +4,22 @@
             <div class="col-lg-6 col-md-6 col-xs-6">
                 <div class="form-group">
                     <label for="InputEmail">Name</label>
-                    <input name="name" type="text" class="form-control" data-ng-model="addChallengeCtrl.addChallangeField.name" id="inputEmail" class="form-control" placeholder="Challenge Name" required="">
+                    <input name="name" type="text" class="form-control" data-ng-model="addCauseCtrl.addChallangeField.name" id="inputEmail" class="form-control" placeholder="Cause Name" required="">
                     <span data-ng-if="(addChallengeForm.$submitted || addChallengeForm.name.$touched) && addChallengeForm.name.$error.required" class="error-block">Name required.</span>                  
                 </div>
                <div class="form-group">
                     <label for="InputEmail">Description</label>
-                    <textarea name="desc" rows="3" class="form-control" data-ng-model="addChallengeCtrl.addChallangeField.desc" id="inputEmail" class="form-control" placeholder="Challenge Description" required=""></textarea>
+                    <textarea name="desc" rows="3" class="form-control" data-ng-model="addCauseCtrl.addChallangeField.desc" id="inputEmail" class="form-control" placeholder="Cause Description" required=""></textarea>
                     <span data-ng-if="(addChallengeForm.$submitted || addChallengeForm.desc.$touched) && addChallengeForm.desc.$error.required" class="error-block">Description required.</span>                  
                 </div>
                 <div class="form-group">
                     <label for="InputEmail">Location</label>
-                    <input name="location" type="text" class="form-control" data-ng-model="addChallengeCtrl.addChallangeField.location" id="inputEmail" class="form-control" placeholder="Location" required="">
+                    <input name="location" type="text" class="form-control" data-ng-model="addCauseCtrl.addChallangeField.location" id="inputEmail" class="form-control" placeholder="Location" required="">
                     <span data-ng-if="(addChallengeForm.$submitted || addChallengeForm.location.$touched) && addChallengeForm.location.$error.required" class="error-block">Location required.</span>                  
                 </div>
                <div class="form-group">
                     <label for="InputEmail">Contact Person</label>
-                    <input name="contact_person" type="text" class="form-control" data-ng-model="addChallengeCtrl.addChallangeField.contact_person" id="inputEmail" class="form-control" placeholder="Challenge Target" required="">
+                    <input name="contact_person" type="text" class="form-control" data-ng-model="addCauseCtrl.addChallangeField.contact_person" id="inputEmail" class="form-control" placeholder="Contact Person" required="">
                     <span data-ng-if="(addChallengeForm.$submitted || addChallengeForm.contact_person.$touched) && addChallengeForm.contact_person.$error.required" class="error-block">Contact Person required.</span>                  
                 </div>
 
@@ -27,7 +27,7 @@
                     <label for="InputEmail">Target</label>
                     <div class="input-group">
                       <div class="input-group-addon">Rs.</div>
-                       <input name="target" type="text" class="form-control" data-ng-model="addChallengeCtrl.addChallangeField.target" id="inputEmail" class="form-control" placeholder="Target Amount" required="">
+                       <input name="target" type="text" class="form-control" data-ng-model="addCauseCtrl.addChallangeField.target" id="inputEmail" class="form-control" placeholder="Target Amount" required="">
                       <div class="input-group-addon">.00</div>
                     </div>
                     <span data-ng-if="(addChallengeForm.$submitted || addChallengeForm.target.$touched) && addChallengeForm.target.$error.required" class="error-block">Target required.</span>                  
@@ -52,7 +52,7 @@
                     </p>                  
                 </div>
 
-                <input type="submit" data-ng-click="addChallengeCtrl.submitForm(addChallengeForm)" name="submit" id="submit" value="Submit" class="btn btn-info btn-lg">
+                <input type="submit" data-ng-click="addCauseCtrl.submitForm(addChallengeForm)" name="submit" id="submit" value="Submit" class="btn btn-info btn-lg">
             </div>
         </form>
     </div>

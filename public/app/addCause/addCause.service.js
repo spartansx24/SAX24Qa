@@ -23,7 +23,7 @@
 
         return service;
 
-        function addChallengeData(addChallengeObj) {
+        function addChallengeData(addCauseObj) {
             var deferred = $q.defer();
             var postData = addCauseObj;
 

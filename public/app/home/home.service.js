@@ -19,7 +19,8 @@
 
         var service = {
             getHomePageData: getHomePageData,
-            getChallengeList: getChallengeList
+            getChallengeList: getChallengeList,
+            getCauseList: getCauseList
         };
 
         return service;
@@ -36,6 +37,21 @@
             var deferred = $q.defer();
             var postData = {'sponserId' : sponserId};
             $http.post(CONSTANTS.SERVICE_URL + 'api/sponserChallengeList', postData).then(function(response) {
+                if(response && response.data) {
+                    deferred.resolve(response.data);
+                }                
+            }, function(error) {
+                console.log(error);
+                deferred.reject(error);
+            });
+            return deferred.promise;
+        }
+
+        function getCauseList(ngoId) {
+
+            var deferred = $q.defer();
+            var postData = {'ngoId' : ngoId};
+            $http.post(CONSTANTS.SERVICE_URL + 'api/ngoCauseList', postData).then(function(response) {
                 if(response && response.data) {
                     deferred.resolve(response.data);
                 }                

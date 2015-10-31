@@ -17,6 +17,7 @@
 
     function HomeController($rootScope, HomeService, StorageUtil, $location) {
     	var vm = this;
+        $rootScope.loggedIn = true;
         vm.loadHomePageData = function() {
             var userObj =  StorageUtil.getLocalObject('userObj');
             vm.userObj = userObj;
@@ -27,13 +28,18 @@
 
                 });
             } else {
+                HomeService.getCauseList(userObj._id).then(function(result) {
+                    vm.causeList = result;
+                }, function(error){
 
+                });
             }
         }
 
         $rootScope.logoutUser = function() {
             var status = StorageUtil.removeLocal('userObj');
             if(status) {
+                $rootScope.loggedIn = false;
                 $location.path('/login');
             }
         }

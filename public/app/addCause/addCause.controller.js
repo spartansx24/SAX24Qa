@@ -65,16 +65,19 @@
                 addCauseobj.startDate = $scope.start_date;
                 addCauseobj.endDate = $scope.end_date;
 
-                AddChallengeService.addChallengeData(addChallengeobj).then(function(result){
+                AddCauseService.addChallengeData(addCauseobj).then(function(result){
                     if(result.status === true) {
                         
                         $loading.finish('commonLoader');
-                        toastr.success('Challenge added successfully', {
+                        toastr.success('Cause added successfully', {
                           closeButton: true
                         });
+                        setTimeout(function() {
+                          $location.path('/home');
+                        }, 3000);
                     } else {
-						$loading.finish('commonLoader');
-                        toastr.error('Error while adding challenge', {
+						            $loading.finish('commonLoader');
+                        toastr.error('Error while adding Cause', {
                           closeButton: true
                         });
                     }

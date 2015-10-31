@@ -252,6 +252,16 @@ module.exports = function(app) {
         });
     });
 
+    app.post('/api/ngoCauseList', function(req, res) {
+        
+        var ngoId = req.body.ngoId;
+        causesModel.find({'ngo': ngoId}, function(err, causeList){
+            if(err) res.json({'err': err});
+            console.log(causeList);
+            res.json(causeList);
+        });    
+    });
+
     app.use('/', function(req, res) {        
         res.sendFile(__dirname + '/public/index.html');
     });
