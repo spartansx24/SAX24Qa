@@ -13,7 +13,7 @@ module.exports = function(app) {
 
 
     app.post('/api/register', function(req, res) {     
-        console.log(req);
+       
         var regObj = {};
 
         regObj.firstName = req.body.firstName;
@@ -34,7 +34,7 @@ module.exports = function(app) {
             regObj.bandDetails = req.body.bandDetails;
         }
 
-        if(req.body.gender) {
+        if(req.body.dob) {
             regObj.dob = req.body.dob;
         }
         if(req.body.contactNumber){
@@ -59,20 +59,24 @@ module.exports = function(app) {
         userModel.find({
             email:regObj.email
         }, function(err, users){
-            if(err) res.json({'err': err});
-
-            //console.log(users);
-            if(users && users.length > 0) {
-                res.json({'status': false, 'msg': 'user already exist'});
+            if(err) {
+               res.json({'err': err}); 
             } else {
-                var userModelObj = new userModel(regObj);
-                userModelObj.save(function(err, userAddedObj){
-                    if(err) res.json({'err': err});
-                    
-                    console.log(userAddedObj);
-                    res.json({'status': true, 'userObj': userAddedObj});
-                });
-            }
+                            //console.log(users);
+                if(users && users.length > 0) {
+                    res.json({'status': false, 'msg': 'user already exist'});
+                } else {
+                    var userModelObj = new userModel(regObj);
+                    userModelObj.save(function(err, userAddedObj){
+                        if(err) {
+                            res.json({'err': err});
+                        } else {                                                    
+                            console.log(userAddedObj);
+                            res.json({'status': true, 'userObj': userAddedObj});
+                        }
+                    });
+                }
+            } 
         });
     });
 
@@ -85,7 +89,7 @@ module.exports = function(app) {
 
     app.post('/api/sponsersList', function(req, res) { 
         sponserChallangesModel.find({}, function(err, sponserChallanges){
-            console.log(sponserChallanges);
+           
             var sendObj = {};
             sendObj.sponserChallange = sponserChallanges;
             userModel.find({
@@ -104,7 +108,7 @@ module.exports = function(app) {
         reqObj.dateTime = req.body.dateTime;
         reqObj.totalDistance = req.body.totalDistance;
         reqObj.totalSteps = parseFloat(reqObj.totalDistance/76.2);
-
+        console.log("runnercausechallengeId----", runnercausechallengeId);
         var stepModelObj = new runnerStepsModel(reqObj);
         stepModelObj.save(function(err, stepAddedObj){
             if(err) {
@@ -133,10 +137,15 @@ module.exports = function(app) {
 
                                 sponserChallangesModel.find({_id: challengeId}, function(err, challenge){
                                     if (err) {
-                                        res.json({message:'Error in finding challenge!'});
+                                        res.json({'err':err});
                                     } else {
-                                        var tagetChallenge = challenge[0].steps;
-                                        res.json({sumTotalSteps:sumSteps,  targetSteps: tagetChallenge});
+                                        if(challenge && challenge.length > 0) {
+                                            var tagetChallenge = challenge[0].steps;
+                                            res.json({sumTotalSteps:sumSteps,  targetSteps: tagetChallenge});
+                                        } else {
+                                            res.json({message:'Error in finding challenge!'});
+                                        }
+                                 
                                     }                                    
                                 });
                             }
@@ -151,6 +160,9 @@ module.exports = function(app) {
         var runnerId = req.query.runnerId;
         var causeId = req.query.causeId;
         var challengeId = req.query.challengeId;
+        console.log("runnerId---", runnerId);
+        console.log("causeId---", causeId);
+        console.log("challengeId---", challengeId);
 
         runnerCauseChallengesModel.find({runner: runnerId, cause: causeId, challenge: challengeId}).lean().exec(function (err, runnercausemodel) {
             if (err) {
@@ -220,35 +232,39 @@ module.exports = function(app) {
                     if (unit=="N") { dist = dist * 0.8684 }
                     return dist;
                 }
+                if(latLng) {
+                                        //var geoTools = require("./helper/geo-tools");
+                    var splitLatLng = latLng.split(",");
 
-                //var geoTools = require("./helper/geo-tools");
-                var splitLatLng = latLng.split(",");
+                    var lat = splitLatLng[0];
+                    var lng = splitLatLng[1];
+                    var sponsorsLength = sponsors.length;
 
-                var lat = splitLatLng[0];
-                var lng = splitLatLng[1];
-                var sponsorsLength = sponsors.length;
-
-                var sponsorsFiltered = [];
-                for(var i=0; i< sponsorsLength; i++){
-                    var sponsorLatLng = sponsors[i].location;
-                    //console.log(sponsorLatLng);
-                    if(sponsorLatLng!==undefined){
-                        var splitSponsorsLocation = sponsorLatLng.split(",");
-                        var distance1 = locationdistance(lat, lng, splitSponsorsLocation[0], splitSponsorsLocation[1], 'K');
-                        if(distance1 <= CONSTANT.TABLES.SPONSOR_RADIUS_LIMIT){
-                            sponsorsFiltered.push(sponsors[i]);
+                    var sponsorsFiltered = [];
+                    for(var i=0; i< sponsorsLength; i++){
+                        var sponsorLatLng = sponsors[i].location;
+                        //console.log(sponsorLatLng);
+                        if(sponsorLatLng!==undefined){
+                            var splitSponsorsLocation = sponsorLatLng.split(",");
+                            var distance1 = locationdistance(lat, lng, splitSponsorsLocation[0], splitSponsorsLocation[1], 'K');
+                            if(distance1 <= CONSTANT.TABLES.SPONSOR_RADIUS_LIMIT){
+                                sponsorsFiltered.push(sponsors[i]);
+                            }
                         }
                     }
+
+                    sponserChallangesModel.find({}).lean().sort('-created').exec(function (err, sponsorChallenges) {
+                        if (err) {
+                            res.json({message: 'Error in finding sponsors!'});
+                        }
+                        else {
+                            res.json({sponsors: sponsorsFiltered, challenges: sponsorChallenges});
+                        }
+                    });
+                } else {
+                    res.json({message: 'Invalid Lat Lng provided.'});
                 }
 
-                sponserChallangesModel.find({}).lean().sort('-created').exec(function (err, sponsorChallenges) {
-                    if (err) {
-                        res.json({message: 'Error in finding sponsors!'});
-                    }
-                    else {
-                        res.json({sponsors: sponsorsFiltered, challenges: sponsorChallenges});
-                    }
-                });
             }
         });
     });
@@ -256,20 +272,24 @@ module.exports = function(app) {
     app.post('/api/addSponsorChallenge', function(req, res) {
         var sponserChallangesModelObj = new sponserChallangesModel(req.body);
         sponserChallangesModelObj.save(function(err, addedchallange){
-            if(err) res.json({'status': false, 'err': err});
+            if(err) {
+                res.json({'status': false, 'err': err});
+            } else {                
+                res.json({'status': true, 'addedChallangeObj': addedchallange});
+            }
 
-            console.log(addedchallange);
-            res.json({'status': true, 'addedChallangeObj': addedchallange});
+
         });
     });
 
     app.post('/api/addNgoCause', function(req, res) {
         var causesModelObj = new causesModel(req.body);
         causesModelObj.save(function(err, addedcause){
-            if(err) res.json({'status': false, 'err': err});
-
-            console.log(addedcause);
-            res.json({'status': true, 'causeObj': addedcause});
+            if(err) {
+                res.json({'status': false, 'err': err});   
+            } else {
+                res.json({'status': true, 'causeObj': addedcause});
+            }
         });
     });
 
@@ -277,9 +297,11 @@ module.exports = function(app) {
         
         var ngoId = req.body.ngoId;
         causesModel.find({'ngo': ngoId}, function(err, causeList){
-            if(err) res.json({'err': err});
-            console.log(causeList);
-            res.json(causeList);
+            if(err) {
+              res.json({'err': err});  
+            } else {
+                  res.json(causeList);
+            }
         });    
     });
 
