@@ -1,3 +1,7 @@
+img, a {
+      outline: none;
+}
+
 .navbar-default{
   background-color: #fff;
   border: none;
@@ -16,18 +20,18 @@ body {
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
+/*.header,
 .marketing,
 .footer {
   padding-left: 15px;
   padding-right: 15px;
-}
+}*/
 
 /* Custom page header */
-.header {
+/*.header {
   border-bottom: 1px solid #e5e5e5;
   margin-bottom: 10px;
-}
+}*/
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
   margin-top: 0;
@@ -148,4 +152,9 @@ body {
   .jumbotron {
     border-bottom: 0;
   }
+}
+
+#registration .nav-tabs li.active a{
+  background-color: #0469cc;
+  color: #fff;
 }

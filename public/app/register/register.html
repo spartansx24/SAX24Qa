@@ -1,102 +1,110 @@
-<uib-tabset justified="true">
-    <uib-tab active="true" heading="Sponsor Registration">
-        <div class="row margin-top-bottom">
-            <form role="form" name="SponsorRegisterForm" novalidate="">
-                <div class="col-lg-8 col-md-8">
-                    <div class="form-group">
-                        <label for="firstName">Name</label>
-                        <input name="firstName" type="text" class="form-control" data-ng-model="registerCtrl.registerField.firstName" id="firstName" class="form-control" placeholder="Name" required="" >
-                        <span data-ng-if="(SponsorRegisterForm.$submitted || SponsorRegisterForm.firstName.$touched) && SponsorRegisterForm.firstName.$error.required" class="error-block">Enter name.</span>
+<div id="registration" class="container">
+    <div class="row margin-top-bottom">
+        <div class="col-lg-6 col-md-6 center-block" style="float:none">
+            <uib-tabset justified="true">
+                <uib-tab active="true" heading="Sponsor Registration">
+                    <div class="row margin-top-bottom">
+                        <form role="form" name="SponsorRegisterForm" novalidate="">
+                            <div class="col-lg-8 col-md-8">
+                                <div class="form-group">
+                                    <label for="firstName">Name</label>
+                                    <input name="firstName" type="text" class="form-control" data-ng-model="registerCtrl.registerField.firstName" id="firstName" class="form-control" placeholder="Name" required="" >
+                                    <span data-ng-if="(SponsorRegisterForm.$submitted || SponsorRegisterForm.firstName.$touched) && SponsorRegisterForm.firstName.$error.required" class="error-block">Enter name.</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="description">Description</label>
+                                    <input name="description" type="text" class="form-control" data-ng-model="registerCtrl.registerField.description" id="description" class="form-control" placeholder="Description" required="" >
+                                    <span data-ng-if="(SponsorRegisterForm.$submitted || SponsorRegisterForm.description.$touched) && SponsorRegisterForm.description.$error.required" class="error-block">Enter Description.</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="type">Type</label>
+                                    <input name="type" type="text" class="form-control" data-ng-model="registerCtrl.registerField.type" id="type" class="form-control" placeholder="Type" required="" >
+                                    <span data-ng-if="(SponsorRegisterForm.$submitted || SponsorRegisterForm.type.$touched) && SponsorRegisterForm.type.$error.required" class="error-block">Enter Type</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phoneNumber">Phone Number</label>
+                                    <input name="phoneNumber" type="text" class="form-control" data-ng-model="registerCtrl.registerField.phoneNumber" id="phoneNumber" class="form-control" placeholder="Phone Number" required="" >
+                                    <span data-ng-if="(SponsorRegisterForm.$submitted || SponsorRegisterForm.phoneNumber.$touched) && SponsorRegisterForm.phoneNumber.$error.required" class="error-block">Enter Phone Number.</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputEmail">Email Address</label>
+                                    <input name="email" type="text" class="form-control" data-ng-model="registerCtrl.registerField.email" id="email" class="form-control" placeholder="Email address" required="" data-ng-pattern="/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/">
+                                    <span data-ng-if="(SponsorRegisterForm.$submitted || SponsorRegisterForm.email.$touched) && SponsorRegisterForm.email.$error.required" class="error-block">Enter Email Address.</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="address">Address</label>
+                                    <input name="address" type="text" class="form-control" data-ng-model="registerCtrl.registerField.address" id="address" class="form-control" placeholder="Address" required="" >
+                                    <span data-ng-if="(SponsorRegisterForm.$submitted || SponsorRegisterForm.address.$touched) && SponsorRegisterForm.address.$error.required" class="error-block">Enter Address.</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword">Password</label>
+                                    <input name="password" class="form-control" data-ng-model="registerCtrl.registerField.password" data-ng-min-length="8" type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+                                    <span data-ng-if="(SponsorRegisterForm.$submitted || SponsorRegisterForm.password.$touched) && SponsorRegisterForm.password.$error.required" class="error-block">Password Required.</span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" data-ng-click="registerCtrl.registerSponsorUser(SponsorRegisterForm)" name="submit" id="submit" value="Sign Up" class="btn btn-success">
+                                    <button type="button" class="btn btn-link">Back</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <div class="form-group">
-                        <label for="description">Description</label>
-                        <input name="description" type="text" class="form-control" data-ng-model="registerCtrl.registerField.description" id="description" class="form-control" placeholder="Description" required="" >
-                        <span data-ng-if="(SponsorRegisterForm.$submitted || SponsorRegisterForm.description.$touched) && SponsorRegisterForm.description.$error.required" class="error-block">Enter Description.</span>
+                </uib-tab>
+                <uib-tab heading="NGO Registration">
+                    <div class="row row margin-top-bottom">
+                        <form role="form" name="NgoRegisterForm" novalidate="">
+                            <div class="col-lg-8 col-md-8">
+                                <div class="form-group">
+                                    <label for="firstName">Name</label>
+                                    <input name="firstName" type="text" class="form-control" data-ng-model="registerCtrl.registerField.firstName" id="firstName" class="form-control" placeholder="Name" required="" >
+                                    <span data-ng-if="(NgoRegisterForm.$submitted || NgoRegisterForm.firstName.$touched) && NgoRegisterForm.firstName.$error.required" class="error-block">Enter Name.</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="description">Description</label>
+                                    <input name="description" type="text" class="form-control" data-ng-model="registerCtrl.registerField.description" id="description" class="form-control" placeholder="Description" required="" >
+                                    <span data-ng-if="(NgoRegisterForm.$submitted || NgoRegisterForm.description.$touched) && NgoRegisterForm.description.$error.required" class="error-block">Enter Description.</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="type">Type</label>
+                                    <input name="type" type="text" class="form-control" data-ng-model="registerCtrl.registerField.type" id="description" class="form-control" placeholder="Type" required="" >
+                                    <span data-ng-if="(NgoRegisterForm.$submitted || NgoRegisterForm.type.$touched) && NgoRegisterForm.type.$error.required" class="error-block">Enter Type.</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phoneNumber">Phone Number</label>
+                                    <input name="phoneNumber" type="text" class="form-control" data-ng-model="registerCtrl.registerField.phoneNumber" id="phoneNumber" class="form-control" placeholder="Phone Number" required="" >
+                                    <span data-ng-if="(NgoRegisterForm.$submitted || NgoRegisterForm.phoneNumber.$touched) && NgoRegisterForm.phoneNumber.$error.required" class="error-block">Enter Phone Number.</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email Address</label>
+                                    <input name="email" type="text" class="form-control" data-ng-model="registerCtrl.registerField.email" id="email" class="form-control" placeholder="Email address" required="" data-ng-pattern="/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/">
+                                    <span data-ng-if="(NgoRegisterForm.$submitted || NgoRegisterForm.email.$touched) && NgoRegisterForm.email.$error.required" class="error-block">Enter Email Address.</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="address">Address</label>
+                                    <input name="address" type="text" class="form-control" data-ng-model="registerCtrl.registerField.address" id="address" class="form-control" placeholder="Address" required="" >
+                                    <span data-ng-if="(NgoRegisterForm.$submitted || NgoRegisterForm.address.$touched) && NgoRegisterForm.address.$error.required" class="error-block">Address Required.</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="workIn">Work In</label>
+                                    <input name="workIn" type="text" class="form-control" data-ng-model="registerCtrl.registerField.workIn" id="workIn" class="form-control" placeholder="Work In" required="" >
+                                    <span data-ng-if="(NgoRegisterForm.$submitted || NgoRegisterForm.workIn.$touched) && NgoRegisterForm.workIn.$error.required" class="error-block">Work In Required.</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contactPerson">Contact Person</label>
+                                    <input name="contactPerson" type="text" class="form-control" data-ng-model="registerCtrl.registerField.contactPerson" id="contactPerson" class="form-control" placeholder="Contact Person" required="" >
+                                    <span data-ng-if="(NgoRegisterForm.$submitted || NgoRegisterForm.contactPerson.$touched) && NgoRegisterForm.contactPerson.$error.required" class="error-block">Contact Person Required.</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword">Password</label>
+                                    <input name="password" class="form-control" data-ng-model="registerCtrl.registerField.password" data-ng-min-length="8" type="password" id="password" class="form-control" placeholder="Password" required="">
+                                    <span data-ng-if="(NgoRegisterForm.$submitted || NgoRegisterForm.password.$touched) && NgoRegisterForm.password.$error.required" class="error-block">Password Required.</span>
+                                </div>
+                                <input type="submit" data-ng-click="registerCtrl.registerNgoUser(NgoRegisterForm)" name="submit" id="submit" value="Sign Up" class="btn btn-info btn-lg">
+                                <button type="button" class="btn btn-link btn-lg pull-right">Back</button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="form-group">
-                        <label for="type">Type</label>
-                        <input name="type" type="text" class="form-control" data-ng-model="registerCtrl.registerField.type" id="type" class="form-control" placeholder="Type" required="" >
-                        <span data-ng-if="(SponsorRegisterForm.$submitted || SponsorRegisterForm.type.$touched) && SponsorRegisterForm.type.$error.required" class="error-block">Enter Type</span>
-                    </div>
-                    <div class="form-group">
-                        <label for="phoneNumber">Phone Number</label>
-                        <input name="phoneNumber" type="text" class="form-control" data-ng-model="registerCtrl.registerField.phoneNumber" id="phoneNumber" class="form-control" placeholder="Phone Number" required="" >
-                        <span data-ng-if="(SponsorRegisterForm.$submitted || SponsorRegisterForm.phoneNumber.$touched) && SponsorRegisterForm.phoneNumber.$error.required" class="error-block">Enter Phone Number.</span>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputEmail">Email Address</label>
-                        <input name="email" type="text" class="form-control" data-ng-model="registerCtrl.registerField.email" id="email" class="form-control" placeholder="Email address" required="" data-ng-pattern="/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/">
-                        <span data-ng-if="(SponsorRegisterForm.$submitted || SponsorRegisterForm.email.$touched) && SponsorRegisterForm.email.$error.required" class="error-block">Enter Email Address.</span>
-                    </div>
-                    <div class="form-group">
-                        <label for="address">Address</label>
-                        <input name="address" type="text" class="form-control" data-ng-model="registerCtrl.registerField.address" id="address" class="form-control" placeholder="Address" required="" >
-                        <span data-ng-if="(SponsorRegisterForm.$submitted || SponsorRegisterForm.address.$touched) && SponsorRegisterForm.address.$error.required" class="error-block">Enter Address.</span>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputPassword">Password</label>
-                        <input name="password" class="form-control" data-ng-model="registerCtrl.registerField.password" data-ng-min-length="8" type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
-                        <span data-ng-if="(SponsorRegisterForm.$submitted || SponsorRegisterForm.password.$touched) && SponsorRegisterForm.password.$error.required" class="error-block">Password Required.</span>
-                    </div>
-                    <input type="submit" data-ng-click="registerCtrl.registerSponsorUser(SponsorRegisterForm)" name="submit" id="submit" value="Sign Up" class="btn btn-info btn-lg">
-                    <button type="button" class="btn btn-link btn-lg pull-right">Back</button>
-                </div>
-            </form>
+                </uib-tab>
+            </uib-tabset>
         </div>
-    </uib-tab>
-    <uib-tab heading="NGO Registration">
-        <div class="row row margin-top-bottom">
-            <form role="form" name="NgoRegisterForm" novalidate="">
-                <div class="col-lg-8 col-md-8">
-                    <div class="form-group">
-                        <label for="firstName">Name</label>
-                        <input name="firstName" type="text" class="form-control" data-ng-model="registerCtrl.registerField.firstName" id="firstName" class="form-control" placeholder="Name" required="" >
-                        <span data-ng-if="(NgoRegisterForm.$submitted || NgoRegisterForm.firstName.$touched) && NgoRegisterForm.firstName.$error.required" class="error-block">Enter Name.</span>
-                    </div>
-                    <div class="form-group">
-                        <label for="description">Description</label>
-                        <input name="description" type="text" class="form-control" data-ng-model="registerCtrl.registerField.description" id="description" class="form-control" placeholder="Description" required="" >
-                        <span data-ng-if="(NgoRegisterForm.$submitted || NgoRegisterForm.description.$touched) && NgoRegisterForm.description.$error.required" class="error-block">Enter Description.</span>
-                    </div>
-                    <div class="form-group">
-                        <label for="type">Type</label>
-                        <input name="type" type="text" class="form-control" data-ng-model="registerCtrl.registerField.type" id="description" class="form-control" placeholder="Type" required="" >
-                        <span data-ng-if="(NgoRegisterForm.$submitted || NgoRegisterForm.type.$touched) && NgoRegisterForm.type.$error.required" class="error-block">Enter Type.</span>
-                    </div>
-                    <div class="form-group">
-                        <label for="phoneNumber">Phone Number</label>
-                        <input name="phoneNumber" type="text" class="form-control" data-ng-model="registerCtrl.registerField.phoneNumber" id="phoneNumber" class="form-control" placeholder="Phone Number" required="" >
-                        <span data-ng-if="(NgoRegisterForm.$submitted || NgoRegisterForm.phoneNumber.$touched) && NgoRegisterForm.phoneNumber.$error.required" class="error-block">Enter Phone Number.</span>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input name="email" type="text" class="form-control" data-ng-model="registerCtrl.registerField.email" id="email" class="form-control" placeholder="Email address" required="" data-ng-pattern="/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/">
-                        <span data-ng-if="(NgoRegisterForm.$submitted || NgoRegisterForm.email.$touched) && NgoRegisterForm.email.$error.required" class="error-block">Enter Email Address.</span>
-                    </div>
-                    <div class="form-group">
-                        <label for="address">Address</label>
-                        <input name="address" type="text" class="form-control" data-ng-model="registerCtrl.registerField.address" id="address" class="form-control" placeholder="Address" required="" >
-                        <span data-ng-if="(NgoRegisterForm.$submitted || NgoRegisterForm.address.$touched) && NgoRegisterForm.address.$error.required" class="error-block">Address Required.</span>
-                    </div>
-                    <div class="form-group">
-                        <label for="workIn">Work In</label>
-                        <input name="workIn" type="text" class="form-control" data-ng-model="registerCtrl.registerField.workIn" id="workIn" class="form-control" placeholder="Work In" required="" >
-                        <span data-ng-if="(NgoRegisterForm.$submitted || NgoRegisterForm.workIn.$touched) && NgoRegisterForm.workIn.$error.required" class="error-block">Work In Required.</span>
-                    </div>
-                    <div class="form-group">
-                        <label for="contactPerson">Contact Person</label>
-                        <input name="contactPerson" type="text" class="form-control" data-ng-model="registerCtrl.registerField.contactPerson" id="contactPerson" class="form-control" placeholder="Contact Person" required="" >
-                        <span data-ng-if="(NgoRegisterForm.$submitted || NgoRegisterForm.contactPerson.$touched) && NgoRegisterForm.contactPerson.$error.required" class="error-block">Contact Person Required.</span>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputPassword">Password</label>
-                        <input name="password" class="form-control" data-ng-model="registerCtrl.registerField.password" data-ng-min-length="8" type="password" id="password" class="form-control" placeholder="Password" required="">
-                        <span data-ng-if="(NgoRegisterForm.$submitted || NgoRegisterForm.password.$touched) && NgoRegisterForm.password.$error.required" class="error-block">Password Required.</span>
-                    </div>
-                    <input type="submit" data-ng-click="registerCtrl.registerNgoUser(NgoRegisterForm)" name="submit" id="submit" value="Sign Up" class="btn btn-info btn-lg">
-                    <button type="button" class="btn btn-link btn-lg pull-right">Back</button>
-                </div>
-            </form>
-        </div>
-    </uib-tab>
+    </div>
 </div>

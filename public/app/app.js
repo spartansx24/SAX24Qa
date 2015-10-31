@@ -28,6 +28,13 @@
                     $location.path(current);
                 }
             });
+            $rootScope.routeToLogin = function() {
+                $location.path("/login");
+            }
+
+            $rootScope.routeToMain = function() {
+                $location.path("/");
+            }
 
             $rootScope.$on('$routeChangeSuccess', function() {
                 $rootScope.showLaunchPage = ($location.path() == "/");

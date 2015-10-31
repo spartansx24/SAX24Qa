@@ -37,7 +37,7 @@
                             <span class="icon-bar"></span>
                         </button> -->
                         <!-- <a class="navbar-brand">Step Ahead</a> -->
-                        <img src="assets/images/logo.png" width="274" height="70"/>
+                        <img ng-click="routeToMain()" src="assets/images/logo.png" width="274" height="70"/>
                     </div>
     <!--                 <div class="collapse navbar-collapse" id="js-navbar-collapse">
                         <ul class="nav navbar-nav">
@@ -50,26 +50,34 @@
                         <span data-ng-if="loggedIn" data-ng-click="logoutUser()">Logout </span>
                     </div>
                 </div>
-                <div class="row" data-ng-if="!showLaunchPage">
+                <div class="row">
                     <img src="assets/images/banner_without_btn.jpg" class="img-responsive"/>
-                    <div class="button-blocks">
-                        <img src="assets/images/btn_blue.png" class="create-challenge"/>
-                        <img src="assets/images/btn_pink.png" class="create-course"/>
+                    <div data-ng-if="showLaunchPage" class="button-blocks">
+                        <img src="assets/images/btn_blue.png" ng-click="routeToLogin()" class="create-challenge"/>
+                        <img src="assets/images/btn_pink.png" ng-click="routeToLogin()" class="create-course"/>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div data-ng-if="!showLaunchPage" class="container">
+    <div data-ng-if="!showLaunchPage" class="container" style="padding: 0;">
         <div ng-view="" dw-loading-options="{active: false,text:''}" dw-loading="commonLoader"></div>
     </div>
-    <div data-ng-if="showLaunchPage" class="container">
-    <!-- <img src="assets/images/banner.jpg" class="img-responsive"/> -->
+    <div data-ng-if="showLaunchPage" class="container" style="padding: 0;">
+       <img src="assets/images/2_I_run_for_you.jpg" class="img-responsive"/> 
     </div>
+    <div data-ng-if="showLaunchPage" class="container" style="padding: 0;">
+       <img src="assets/images/2_who_can_get.jpeg" class="img-responsive"/> 
+    </div>
+    <div data-ng-if="showLaunchPage" class="container" style="padding: 0;">
+       <img src="assets/images/3_sponsors.jpg" class="img-responsive"/> 
+    </div>
+    <div data-ng-if="showLaunchPage" data-ng-if="showLaunchPage" class="container" style="padding: 0;">
+       <img src="assets/images/footer.jpg" class="img-responsive"/> 
+    </div>
+
     <div class="footer">
-        <div class="container">
-            
-        </div>
+       
     </div>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <script>
