@@ -116,8 +116,8 @@ body {
 }
 .button-blocks {
     position: absolute;
-    top: 83%;
-    left: 34%;
+  bottom: 8%;
+  left: 31%;
 }
 
 .create-challenge {
