@@ -152,20 +152,14 @@ module.exports = function(app) {
 
         runnerCauseChallengesModel.find({runner: runnerId, cause: causeId, challenge: challengeId}).lean().exec(function (err, runnercausemodel) {
             if (err) {
-                res.json({message:'Error in finding runnercausemodel!'});
+                res.json({'err': err});
             }
             else {
-                res.json({id:runnercausemodel[0]._id});
-                /*
-                runnerCauseChallengesModel.find({_id:runnerCauseChallengeId}, function(err, runcausechallenge){
-                    if (err) {
-                        res.json({message:'Error in finding runcausechallenge!'});
-                    }
-                    else {
-                        res.json(runcausechallenge.challenge);
-                    }
-                });
-                */
+                if(runnercausemodel && runnercausemodel.length > 0) {
+                    res.json({id:runnercausemodel[0]._id});
+                } else {
+                    res.json({msg: "not found"});
+                }
             }
         });
     });
