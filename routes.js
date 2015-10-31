@@ -17,14 +17,42 @@ module.exports = function(app) {
         var regObj = {};
 
         regObj.firstName = req.body.firstName;
-        regObj.lastName = req.body.lastName;
+
+        if(req.body.lastName) {
+            regObj.lastName = req.body.lastName;
+        }
+
         regObj.userRole = req.body.userRole;
-        regObj.gender = req.body.gender;
+
+        if(req.body.gender) {
+            regObj.gender = req.body.gender;
+        }
         if(req.body.bandId) {
             regObj.bandId = req.body.bandId; 
-        }        
-        regObj.dob = req.body.dob;
-        regObj.contactNumber = req.body.contactNumber;
+        }
+        if(req.body.bandDetails) {
+            regObj.bandDetails = req.body.bandDetails;
+        }
+
+        if(req.body.gender) {
+            regObj.dob = req.body.dob;
+        }
+        if(req.body.contactNumber){
+            regObj.contactNumber = req.body.contactNumber;
+        }
+
+        if(req.body.description){
+            regObj.description = req.body.description;
+        }
+
+        if(req.body.workIn){
+            regObj.workIn = req.body.workIn;
+        }
+
+        if(req.body.contactPerson){
+            regObj.contactPerson = req.body.contactPerson;
+        }
+
         regObj.email = req.body.email;
         regObj.password = req.body.password; 
         

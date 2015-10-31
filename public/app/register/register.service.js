@@ -18,19 +18,36 @@
     function RegisterService($http, $q, CONSTANTS) {
 
         var service = {
-            validateUserLoginDetils: validateUserLoginDetils
+            registerSponsorUser: registerSponsor,
+            registerNgoUser: registerNgo
         };
 
         return service;
 
-        function validateUserLoginDetils(userRole, userName, password) {
+        function registerSponsor(regObj) {
             var deferred = $q.defer();
-            var postData = {'userRole' : userRole, 'email': userName, 'password': password};
+            var postData = regObj;
 
-            $http.post(CONSTANTS.SERVICE_URL + 'api/validateLogin', postData).then(function(response) {
+            $http.post(CONSTANTS.SERVICE_URL + 'api/register', postData).then(function(response) {
                 if(response && response.data) {
                     deferred.resolve(response.data);
                 }                
+            }, function(error) {
+                console.log(error);
+                deferred.reject(error);
+            });
+
+            return deferred.promise;
+        }
+
+        function registerNgo(regObj) {
+            var deferred = $q.defer();
+            var postData = regObj;
+
+            $http.post(CONSTANTS.SERVICE_URL + 'api/register', postData).then(function(response) {
+                if(response && response.data) {
+                    deferred.resolve(response.data);
+                }
             }, function(error) {
                 console.log(error);
                 deferred.reject(error);
