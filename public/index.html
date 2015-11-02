@@ -11,6 +11,7 @@
     <!-- bower:css -->
     <link rel="stylesheet" href="assets/lib/angular-toastr/dist/angular-toastr.css" />
     <link rel="stylesheet" href="assets/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="assets/lib/angular-loading/angular-loading.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css styles/main.css -->
@@ -26,7 +27,7 @@
     <!-- Add your site or application content here -->
 <!--     <div dw-loading="commonLoader" dw-loading-options="options"></div> -->
     <div class="header">
-        <div class="navbar navbar-default" role="navigation">
+        <div class="navbar" role="navigation">
             <div class="container">
                 <div class="row">
                     <div class="navbar-header">
@@ -47,12 +48,13 @@
                         <!-- </ul> 
                     </div> -->
                     <div class="margin-top-bottom pull-right">
-                        <span data-ng-if="loggedIn" data-ng-click="logoutUser()">Logout </span>
+                        <span data-ng-if="loggedIn" class="btn btn-link" data-ng-click="routeToHome()">Home </span>
+                        <span data-ng-if="loggedIn" class="btn btn-link" data-ng-click="logoutUser()">Logout </span>
                     </div>
                 </div>
                 <div class="row" style="position:relative">
                     <img src="assets/images/banner_without_btn.jpg" class="img-responsive"/>
-                    <div data-ng-if="showLaunchPage" class="button-blocks">
+                    <div data-ng-if="showLaunchPage && !loggedIn" class="button-blocks">
                         <img src="assets/images/btn_blue.png" ng-click="routeToLogin()" class="create-challenge"/>
                         <img src="assets/images/btn_pink.png" ng-click="routeToLogin()" class="create-course"/>
                     </div>

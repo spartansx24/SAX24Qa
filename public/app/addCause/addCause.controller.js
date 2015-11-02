@@ -67,15 +67,15 @@
                 addCauseobj.endDate = $scope.end_date;
 
                 AddCauseService.addChallengeData(addCauseobj).then(function(result){
-                    if(result.status === true) {
+                    if(result.status === true) {                       
                         
-                        $loading.finish('commonLoader');
                         toastr.success('Cause added successfully', {
                           closeButton: true
                         });
                         setTimeout(function() {
                           $location.path('/home');
-                        }, 1000);
+                        }, 500);
+                        $loading.finish('commonLoader');
                     } else {
 						            $loading.finish('commonLoader');
                         toastr.error('Error while adding Cause', {

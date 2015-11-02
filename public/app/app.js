@@ -36,6 +36,11 @@
                 $location.path("/");
             }
 
+            $rootScope.routeToHome = function() {
+                $location.path("/home");
+            }
+            
+
             $rootScope.$on('$routeChangeSuccess', function() {
                 $rootScope.showLaunchPage = ($location.path() == "/");
             });

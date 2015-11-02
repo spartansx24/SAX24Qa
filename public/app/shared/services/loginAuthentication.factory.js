@@ -13,9 +13,9 @@
         .module('angularApp')
         .service('loginAuthenticationFactory', loginAuthenticationFactory);
 
-    loginAuthenticationFactory.$inject = ['StorageUtil'];
+    loginAuthenticationFactory.$inject = ['StorageUtil', '$rootScope'];
 
-    function loginAuthenticationFactory(StorageUtil) {
+    function loginAuthenticationFactory(StorageUtil, $rootScope) {
 
         var service = {
             getLoggedInUserId: getLoggedInUserId
@@ -26,6 +26,7 @@
         function getLoggedInUserId() {            
             var userObj = StorageUtil.getLocal('userObj');
             if(userObj) {
+                $rootScope.loggedIn = true;
                 userObj = JSON.parse(userObj);
                 return (userObj && userObj._id);
             }

@@ -69,14 +69,14 @@
                 AddChallengeService.addChallengeData(addChallengeobj).then(function(result){
                     if(result.status === true) {
                         
-                        $loading.finish('commonLoader');
+                        
                         toastr.success('Challenge added successfully', {
                           closeButton: true
                         });
-
                         setTimeout(function() {
                           $location.path('/home');
-                        }, 1000);
+                        }, 500);
+                        $loading.finish('commonLoader');
                     } else {
 						            $loading.finish('commonLoader');
                         toastr.error('Error while adding challenge', {
