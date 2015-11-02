@@ -73,8 +73,12 @@
                         toastr.success('Challenge added successfully', {
                           closeButton: true
                         });
+
+                        setTimeout(function() {
+                          $location.path('/home');
+                        }, 1000);
                     } else {
-						$loading.finish('commonLoader');
+						            $loading.finish('commonLoader');
                         toastr.error('Error while adding challenge', {
                           closeButton: true
                         });

@@ -1,13 +1,16 @@
 var nodemailer = require('nodemailer');
 
-// create reusable transporter object using SMTP transport
-var transporter = nodemailer.createTransport({
-    service: 'Gmail',
+var transport = nodemailer.createTransport("SMTP", {
+    host: "smtp.gmail.com", // hostname
+    secureConnection: true, // use SSL
+    port: 465, // port for secure SMTP
     auth: {
-        user: 'spartansx24@gmail.com',
-        pass: '#spartans123'
+        user: "gmail.user@gmail.com",
+        pass: "userpass"
     }
 });
+
+
 
 // NB! No need to recreate the transporter object. You can use
 // the same transporter object for all e-mails
@@ -22,10 +25,10 @@ var mailOptions = {
 };
 
 // send mail with defined transport object
-transporter.sendMail(mailOptions, function(error, info){
-    if(error){
-        return console.log(error);
-    }
-    console.log('Message sent: ' + info.response);
+// transporter.sendMail(mailOptions, function(error, info){
+//     if(error){
+//         return console.log(error);
+//     }
+//     console.log('Message sent: ' + info.response);
 
-});
+// });

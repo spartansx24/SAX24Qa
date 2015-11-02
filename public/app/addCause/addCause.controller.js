@@ -57,11 +57,12 @@
                 $loading.start('commonLoader');
                 var userObj =  StorageUtil.getLocalObject('userObj');
                 var addCauseobj = {};
-                addCauseobj.firstname = this.addChallangeField.name;
+                addCauseobj.firstName = this.addChallangeField.name;
                 addCauseobj.description = this.addChallangeField.desc;
                 addCauseobj.ngo = userObj._id;
                 addCauseobj.target = this.addChallangeField.target;
                 addCauseobj.location = this.addChallangeField.location;
+                addCauseobj.contactPerson = this.addChallangeField.contact_person;                
                 addCauseobj.startDate = $scope.start_date;
                 addCauseobj.endDate = $scope.end_date;
 
@@ -74,7 +75,7 @@
                         });
                         setTimeout(function() {
                           $location.path('/home');
-                        }, 3000);
+                        }, 1000);
                     } else {
 						            $loading.finish('commonLoader');
                         toastr.error('Error while adding Cause', {
