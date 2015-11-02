@@ -209,7 +209,7 @@ module.exports = function(app) {
     });
 
     app.get('/api/getSponsorsByRadius', function(req, res) {
-        userModel.find({userRole: 2}).lean().sort('-firstName').exec(function (err, sponsors) {
+        userModel.find({userRole: 2}).lean().sort('-created').exec(function (err, sponsors) {
             if (err) {
                 res.json({message:'Error in finding sponsors!'});
             }
@@ -232,38 +232,38 @@ module.exports = function(app) {
                     if (unit=="N") { dist = dist * 0.8684 }
                     return dist;
                 }
-                if(latLng) {
+                //if(latLng) {
                                         //var geoTools = require("./helper/geo-tools");
-                    var splitLatLng = latLng.split(",");
+                    // var splitLatLng = latLng.split(",");
 
-                    var lat = splitLatLng[0];
-                    var lng = splitLatLng[1];
-                    var sponsorsLength = sponsors.length;
+                    // var lat = splitLatLng[0];
+                    // var lng = splitLatLng[1];
+                    // var sponsorsLength = sponsors.length;
 
-                    var sponsorsFiltered = [];
-                    for(var i=0; i< sponsorsLength; i++){
-                        var sponsorLatLng = sponsors[i].location;
-                        //console.log(sponsorLatLng);
-                        if(sponsorLatLng!==undefined){
-                            var splitSponsorsLocation = sponsorLatLng.split(",");
-                            var distance1 = locationdistance(lat, lng, splitSponsorsLocation[0], splitSponsorsLocation[1], 'K');
-                            if(distance1 <= CONSTANT.TABLES.SPONSOR_RADIUS_LIMIT){
-                                sponsorsFiltered.push(sponsors[i]);
-                            }
-                        }
-                    }
+                    // var sponsorsFiltered = [];
+                    // for(var i=0; i< sponsorsLength; i++){
+                    //     var sponsorLatLng = sponsors[i].location;
+                    //     //console.log(sponsorLatLng);
+                    //     if(sponsorLatLng!==undefined){
+                    //         var splitSponsorsLocation = sponsorLatLng.split(",");
+                    //         var distance1 = locationdistance(lat, lng, splitSponsorsLocation[0], splitSponsorsLocation[1], 'K');
+                    //         if(distance1 <= CONSTANT.TABLES.SPONSOR_RADIUS_LIMIT){
+                    //             sponsorsFiltered.push(sponsors[i]);
+                    //         }
+                    //     }
+                    // }
 
                     sponserChallangesModel.find({}).lean().sort('-created').exec(function (err, sponsorChallenges) {
                         if (err) {
                             res.json({message: 'Error in finding sponsors!'});
                         }
                         else {
-                            res.json({sponsors: sponsorsFiltered, challenges: sponsorChallenges});
+                            res.json({sponsors: sponsors, challenges: sponsorChallenges});
                         }
                     });
-                } else {
-                    res.json({message: 'Invalid Lat Lng provided.'});
-                }
+                // } else {
+                //     res.json({message: 'Invalid Lat Lng provided.'});
+                // }
 
             }
         });
